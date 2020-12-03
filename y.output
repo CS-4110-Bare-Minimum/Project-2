@@ -16,111 +16,118 @@
   10                    |
 
   11  Variable : Type ID
+  12           | Type ID ASSIGNOP Expr
 
-  12  Type : INT
-  13       | DOUBLE
-  14       | BOOLEAN
-  15       | STRING
-  16       | Type LEFTBRACKET RIGHTBRACKET
-  17       | ID
+  13  Type : INT
+  14       | DOUBLE
+  15       | BOOLEAN
+  16       | STRING
+  17       | Type LEFTBRACKET RIGHTBRACKET
+  18       | ID
 
-  18  FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock
-  19               | VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+  19  FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock
+  20               | VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock
 
-  20  Variable_PLUS : Variable
-  21                | Variable_PLUS COMMA Variable
+  21  Variable_PLUS : Variable
+  22                | Variable_PLUS COMMA Variable
 
-  22  Formals : Variable_PLUS
-  23          |
+  23  Formals : Variable_PLUS
+  24          |
 
-  24  ID_PLUS : ID
-  25          | ID_PLUS COMMA ID
+  25  ID_PLUS : ID
+  26          | ID_PLUS COMMA ID
 
-  26  ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE
+  27  EXTEND : EXTENDS ID
+  28         |
 
-  27  Field : VariableDecl
-  28        | FunctionDecl
+  29  IMPLEMENT : IMPLEMENTS ID_PLUS
+  30            |
 
-  29  Field_MULT : Field_MULT Field
-  30             |
+  31  ClassDecl : CLASS ID EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE
 
-  31  InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE
+  32  Field : VariableDecl
+  33        | FunctionDecl
 
-  32  Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
-  33            | VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+  34  Field_MULT : Field_MULT Field
+  35             |
 
-  34  Prototype_MULT : Prototype_MULT Prototype
-  35                 |
+  36  InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE
 
-  36  StmtBlock : LEFTPAREN VariableDecl_MULT Stmt_MULT RIGHTPAREN
+  37  Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
+  38            | VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON
 
-  37  Stmt_MULT : Stmt_MULT Stmt
-  38            |
+  39  Prototype_MULT : Prototype_MULT Prototype
+  40                 |
 
-  39  Stmt : IfStmt
-  40       | WhileStmt
-  41       | ForStmt
-  42       | BreakStmt
-  43       | ReturnStmt
-  44       | PrintStmt
-  45       | StmtBlock
+  41  StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE
 
-  46  IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt
+  42  Stmt : Expr SEMICOLON
+  43       | IfStmt
+  44       | WhileStmt
+  45       | ForStmt
+  46       | BreakStmt
+  47       | ReturnStmt
+  48       | PrintStmt
+  49       | StmtBlock
 
-  47  WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN Stmt
+  50  Stmt_MULT : Stmt_MULT Stmt
+  51            |
 
-  48  ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt
+  52  IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt
 
-  49  BreakStmt : BREAK SEMICOLON
+  53  WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN Stmt
 
-  50  ReturnStmt : RETURN Expr SEMICOLON
+  54  ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt
 
-  51  PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON
+  55  BreakStmt : BREAK SEMICOLON
 
-  52  Expr : Lvalue ASSIGNOP Expr
-  53       | Constant
-  54       | Lvalue
-  55       | THIS
-  56       | Call
-  57       | LEFTPAREN Expr RIGHTPAREN
-  58       | Expr PLUS Expr
-  59       | Expr MINUS Expr
-  60       | Expr MULTIPLICATION Expr
-  61       | Expr DIVISION Expr
-  62       | Expr MOD Expr
-  63       | MINUS Expr
-  64       | Expr LESS Expr
-  65       | Expr LESSEQUAL Expr
-  66       | Expr GREATER Expr
-  67       | Expr GREATEREQUAL Expr
-  68       | Expr EQUAL Expr
-  69       | Expr NOTEQUAL Expr
-  70       | Expr AND Expr
-  71       | Expr OR Expr
-  72       | NOT Expr
-  73       | READLN LEFTPAREN RIGHTPAREN
-  74       | NEW LEFTPAREN ID RIGHTPAREN
-  75       | NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN
+  56  ReturnStmt : RETURN Expr SEMICOLON
 
-  76  Expr_PLUS : Expr
-  77            | Expr_PLUS COMMA Expr
+  57  PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON
 
-  78  Lvalue : Variable
-  79         | ID
-  80         | Lvalue LEFTBRACKET Expr RIGHTBRACKET
-  81         | Lvalue PERIOD ID
+  58  Expr : Lvalue ASSIGNOP Expr
+  59       | Constant
+  60       | Lvalue
+  61       | THIS
+  62       | Call
+  63       | LEFTPAREN Expr RIGHTPAREN
+  64       | Expr PLUS Expr
+  65       | Expr MINUS Expr
+  66       | Expr MULTIPLICATION Expr
+  67       | Expr DIVISION Expr
+  68       | Expr MOD Expr
+  69       | MINUS Expr
+  70       | Expr LESS Expr
+  71       | Expr LESSEQUAL Expr
+  72       | Expr GREATER Expr
+  73       | Expr GREATEREQUAL Expr
+  74       | Expr EQUAL Expr
+  75       | Expr NOTEQUAL Expr
+  76       | Expr AND Expr
+  77       | Expr OR Expr
+  78       | NOT Expr
+  79       | READLN LEFTPAREN RIGHTPAREN
+  80       | NEW LEFTPAREN ID RIGHTPAREN
+  81       | NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN
 
-  82  Call : ID LEFTPAREN Actuals RIGHTPAREN
-  83       | ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN
+  82  Expr_PLUS : Expr
+  83            | Expr_PLUS COMMA Expr
 
-  84  Actuals : Expr_PLUS COMMA
-  85          |
+  84  Lvalue : ID
+  85         | Lvalue LEFTBRACKET Expr RIGHTBRACKET
+  86         | Lvalue PERIOD ID
 
-  86  Constant : INTCONSTANT
-  87           | DOUBLECONSTANT
-  88           | STRINGCONSTANT
-  89           | BOOLEANCONSTANT
-  90           | NULL
+  87  Call : ID LEFTPAREN Actuals RIGHTPAREN
+  88       | ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN
+
+  89  Actuals : Expr_PLUS COMMA
+  90          |
+
+  91  Constant : INTCONSTANT
+  92           | DOUBLECONSTANT
+  93           | STRINGCONSTANT
+  94           | BOOLEANCONSTANT
+  95           | NULL
 
 state 0
 	$accept : . Program $end  (0)
@@ -147,54 +154,54 @@ state 0
 
 
 state 1
-	Type : BOOLEAN .  (14)
+	Type : BOOLEAN .  (15)
 
-	.  reduce 14
+	.  reduce 15
 
 
 state 2
-	ClassDecl : CLASS . ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE  (26)
+	ClassDecl : CLASS . ID EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE  (31)
 
 	ID  shift 18
 	.  error
 
 
 state 3
-	Type : DOUBLE .  (13)
+	Type : DOUBLE .  (14)
+
+	.  reduce 14
+
+
+state 4
+	Type : INT .  (13)
 
 	.  reduce 13
 
 
-state 4
-	Type : INT .  (12)
-
-	.  reduce 12
-
-
 state 5
-	InterfaceDecl : INTERFACE . ID LEFTBRACE Prototype_MULT RIGHTBRACE  (31)
+	InterfaceDecl : INTERFACE . ID LEFTBRACE Prototype_MULT RIGHTBRACE  (36)
 
 	ID  shift 19
 	.  error
 
 
 state 6
-	Type : STRING .  (15)
+	Type : STRING .  (16)
 
-	.  reduce 15
+	.  reduce 16
 
 
 state 7
-	FunctionDecl : VOID . ID LEFTPAREN Formals RIGHTPAREN StmtBlock  (19)
+	FunctionDecl : VOID . ID LEFTPAREN Formals RIGHTPAREN StmtBlock  (20)
 
 	ID  shift 20
 	.  error
 
 
 state 8
-	Type : ID .  (17)
+	Type : ID .  (18)
 
-	.  reduce 17
+	.  reduce 18
 
 
 state 9
@@ -250,8 +257,9 @@ state 16
 
 state 17
 	Variable : Type . ID  (11)
-	Type : Type . LEFTBRACKET RIGHTBRACKET  (16)
-	FunctionDecl : Type . ID LEFTPAREN Formals RIGHTPAREN StmtBlock  (18)
+	Variable : Type . ID ASSIGNOP Expr  (12)
+	Type : Type . LEFTBRACKET RIGHTBRACKET  (17)
+	FunctionDecl : Type . ID LEFTPAREN Formals RIGHTPAREN StmtBlock  (19)
 
 	ID  shift 23
 	LEFTBRACKET  shift 24
@@ -259,23 +267,27 @@ state 17
 
 
 state 18
-	ClassDecl : CLASS ID . EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE  (26)
+	ClassDecl : CLASS ID . EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE  (31)
+	EXTEND : .  (28)
 
 	EXTENDS  shift 25
-	.  error
+	IMPLEMENTS  reduce 28
+	LEFTBRACE  reduce 28
+
+	EXTEND  goto 26
 
 
 state 19
-	InterfaceDecl : INTERFACE ID . LEFTBRACE Prototype_MULT RIGHTBRACE  (31)
+	InterfaceDecl : INTERFACE ID . LEFTBRACE Prototype_MULT RIGHTBRACE  (36)
 
-	LEFTBRACE  shift 26
+	LEFTBRACE  shift 27
 	.  error
 
 
 state 20
-	FunctionDecl : VOID ID . LEFTPAREN Formals RIGHTPAREN StmtBlock  (19)
+	FunctionDecl : VOID ID . LEFTPAREN Formals RIGHTPAREN StmtBlock  (20)
 
-	LEFTPAREN  shift 27
+	LEFTPAREN  shift 28
 	.  error
 
 
@@ -292,7 +304,7 @@ state 21
 	ID  shift 8
 	.  error
 
-	Decl  goto 28
+	Decl  goto 29
 	VariableDecl  goto 12
 	FunctionDecl  goto 13
 	ClassDecl  goto 14
@@ -309,1896 +321,395 @@ state 22
 
 state 23
 	Variable : Type ID .  (11)
-	FunctionDecl : Type ID . LEFTPAREN Formals RIGHTPAREN StmtBlock  (18)
+	Variable : Type ID . ASSIGNOP Expr  (12)
+	FunctionDecl : Type ID . LEFTPAREN Formals RIGHTPAREN StmtBlock  (19)
 
-	LEFTPAREN  shift 29
+	LEFTPAREN  shift 30
+	ASSIGNOP  shift 31
 	SEMICOLON  reduce 11
 
 
 state 24
-	Type : Type LEFTBRACKET . RIGHTBRACKET  (16)
+	Type : Type LEFTBRACKET . RIGHTBRACKET  (17)
 
-	RIGHTBRACKET  shift 30
+	RIGHTBRACKET  shift 32
 	.  error
 
 
 state 25
-	ClassDecl : CLASS ID EXTENDS . ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE  (26)
+	EXTEND : EXTENDS . ID  (27)
 
-	ID  shift 31
+	ID  shift 33
 	.  error
 
 
 state 26
-	InterfaceDecl : INTERFACE ID LEFTBRACE . Prototype_MULT RIGHTBRACE  (31)
-	Prototype_MULT : .  (35)
+	ClassDecl : CLASS ID EXTEND . IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE  (31)
+	IMPLEMENT : .  (30)
 
-	.  reduce 35
+	IMPLEMENTS  shift 34
+	LEFTBRACE  reduce 30
 
-	Prototype_MULT  goto 32
+	IMPLEMENT  goto 35
 
 
 state 27
-	FunctionDecl : VOID ID LEFTPAREN . Formals RIGHTPAREN StmtBlock  (19)
-	Formals : .  (23)
+	InterfaceDecl : INTERFACE ID LEFTBRACE . Prototype_MULT RIGHTBRACE  (36)
+	Prototype_MULT : .  (40)
+
+	.  reduce 40
+
+	Prototype_MULT  goto 36
+
+
+state 28
+	FunctionDecl : VOID ID LEFTPAREN . Formals RIGHTPAREN StmtBlock  (20)
+	Formals : .  (24)
 
 	BOOLEAN  shift 1
 	DOUBLE  shift 3
 	INT  shift 4
 	STRING  shift 6
 	ID  shift 8
-	RIGHTPAREN  reduce 23
+	RIGHTPAREN  reduce 24
 
-	Variable  goto 33
-	Type  goto 34
-	Formals  goto 35
-	Variable_PLUS  goto 36
+	Variable  goto 37
+	Type  goto 38
+	Formals  goto 39
+	Variable_PLUS  goto 40
 
 
-state 28
+state 29
 	Decl_PLUS : Decl_PLUS COMMA Decl .  (7)
 
 	.  reduce 7
 
 
-state 29
-	FunctionDecl : Type ID LEFTPAREN . Formals RIGHTPAREN StmtBlock  (18)
-	Formals : .  (23)
+state 30
+	FunctionDecl : Type ID LEFTPAREN . Formals RIGHTPAREN StmtBlock  (19)
+	Formals : .  (24)
 
 	BOOLEAN  shift 1
 	DOUBLE  shift 3
 	INT  shift 4
 	STRING  shift 6
 	ID  shift 8
-	RIGHTPAREN  reduce 23
+	RIGHTPAREN  reduce 24
 
-	Variable  goto 33
-	Type  goto 34
-	Formals  goto 37
-	Variable_PLUS  goto 36
-
-
-state 30
-	Type : Type LEFTBRACKET RIGHTBRACKET .  (16)
-
-	.  reduce 16
+	Variable  goto 37
+	Type  goto 38
+	Formals  goto 41
+	Variable_PLUS  goto 40
 
 
 state 31
-	ClassDecl : CLASS ID EXTENDS ID . IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE  (26)
+	Variable : Type ID ASSIGNOP . Expr  (12)
 
-	IMPLEMENTS  shift 38
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
 	.  error
+
+	Expr  goto 55
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
 
 
 state 32
-	InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT . RIGHTBRACE  (31)
-	Prototype_MULT : Prototype_MULT . Prototype  (34)
+	Type : Type LEFTBRACKET RIGHTBRACKET .  (17)
 
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	VOID  shift 39
-	ID  shift 8
-	RIGHTBRACE  shift 40
-	.  error
-
-	Type  goto 41
-	Prototype  goto 42
+	.  reduce 17
 
 
 state 33
-	Variable_PLUS : Variable .  (20)
-
-	.  reduce 20
-
-
-state 34
-	Variable : Type . ID  (11)
-	Type : Type . LEFTBRACKET RIGHTBRACKET  (16)
-
-	ID  shift 43
-	LEFTBRACKET  shift 24
-	.  error
-
-
-state 35
-	FunctionDecl : VOID ID LEFTPAREN Formals . RIGHTPAREN StmtBlock  (19)
-
-	RIGHTPAREN  shift 44
-	.  error
-
-
-state 36
-	Variable_PLUS : Variable_PLUS . COMMA Variable  (21)
-	Formals : Variable_PLUS .  (22)
-
-	COMMA  shift 45
-	RIGHTPAREN  reduce 22
-
-
-state 37
-	FunctionDecl : Type ID LEFTPAREN Formals . RIGHTPAREN StmtBlock  (18)
-
-	RIGHTPAREN  shift 46
-	.  error
-
-
-state 38
-	ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS . ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE  (26)
-
-	ID  shift 47
-	.  error
-
-	ID_PLUS  goto 48
-
-
-state 39
-	Prototype : VOID . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON  (33)
-
-	ID  shift 49
-	.  error
-
-
-state 40
-	InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE .  (31)
-
-	.  reduce 31
-
-
-state 41
-	Type : Type . LEFTBRACKET RIGHTBRACKET  (16)
-	Prototype : Type . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON  (32)
-
-	ID  shift 50
-	LEFTBRACKET  shift 24
-	.  error
-
-
-state 42
-	Prototype_MULT : Prototype_MULT Prototype .  (34)
-
-	.  reduce 34
-
-
-state 43
-	Variable : Type ID .  (11)
-
-	.  reduce 11
-
-
-state 44
-	FunctionDecl : VOID ID LEFTPAREN Formals RIGHTPAREN . StmtBlock  (19)
-
-	LEFTPAREN  shift 51
-	.  error
-
-	StmtBlock  goto 52
-
-
-state 45
-	Variable_PLUS : Variable_PLUS COMMA . Variable  (21)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	ID  shift 8
-	.  error
-
-	Variable  goto 53
-	Type  goto 34
-
-
-state 46
-	FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN . StmtBlock  (18)
-
-	LEFTPAREN  shift 51
-	.  error
-
-	StmtBlock  goto 54
-
-
-state 47
-	ID_PLUS : ID .  (24)
-
-	.  reduce 24
-
-
-state 48
-	ID_PLUS : ID_PLUS . COMMA ID  (25)
-	ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS . LEFTBRACE Field_MULT RIGHTBRACE  (26)
-
-	LEFTBRACE  shift 55
-	COMMA  shift 56
-	.  error
-
-
-state 49
-	Prototype : VOID ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON  (33)
-
-	LEFTPAREN  shift 57
-	.  error
-
-
-state 50
-	Prototype : Type ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON  (32)
-
-	LEFTPAREN  shift 58
-	.  error
-
-
-state 51
-	StmtBlock : LEFTPAREN . VariableDecl_MULT Stmt_MULT RIGHTPAREN  (36)
-	VariableDecl_MULT : .  (10)
-
-	.  reduce 10
-
-	VariableDecl_MULT  goto 59
-
-
-state 52
-	FunctionDecl : VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock .  (19)
-
-	.  reduce 19
-
-
-state 53
-	Variable_PLUS : Variable_PLUS COMMA Variable .  (21)
-
-	.  reduce 21
-
-
-state 54
-	FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock .  (18)
-
-	.  reduce 18
-
-
-state 55
-	ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE . Field_MULT RIGHTBRACE  (26)
-	Field_MULT : .  (30)
-
-	.  reduce 30
-
-	Field_MULT  goto 60
-
-
-state 56
-	ID_PLUS : ID_PLUS COMMA . ID  (25)
-
-	ID  shift 61
-	.  error
-
-
-state 57
-	Prototype : VOID ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON  (33)
-	Formals : .  (23)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	ID  shift 8
-	RIGHTPAREN  reduce 23
-
-	Variable  goto 33
-	Type  goto 34
-	Formals  goto 62
-	Variable_PLUS  goto 36
-
-
-state 58
-	Prototype : Type ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON  (32)
-	Formals : .  (23)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	ID  shift 8
-	RIGHTPAREN  reduce 23
-
-	Variable  goto 33
-	Type  goto 34
-	Formals  goto 63
-	Variable_PLUS  goto 36
-
-
-state 59
-	VariableDecl_MULT : VariableDecl_MULT . VariableDecl  (9)
-	StmtBlock : LEFTPAREN VariableDecl_MULT . Stmt_MULT RIGHTPAREN  (36)
-	Stmt_MULT : .  (38)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	ID  shift 8
-	BREAK  reduce 38
-	FOR  reduce 38
-	IF  reduce 38
-	PRINTLN  reduce 38
-	RETURN  reduce 38
-	WHILE  reduce 38
-	LEFTPAREN  reduce 38
-	RIGHTPAREN  reduce 38
-
-	VariableDecl  goto 64
-	Variable  goto 16
-	Type  goto 34
-	Stmt_MULT  goto 65
-
-
-state 60
-	ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT . RIGHTBRACE  (26)
-	Field_MULT : Field_MULT . Field  (29)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	STRING  shift 6
-	VOID  shift 7
-	ID  shift 8
-	RIGHTBRACE  shift 66
-	.  error
-
-	VariableDecl  goto 67
-	FunctionDecl  goto 68
-	Variable  goto 16
-	Type  goto 17
-	Field  goto 69
-
-
-state 61
-	ID_PLUS : ID_PLUS COMMA ID .  (25)
-
-	.  reduce 25
-
-
-state 62
-	Prototype : VOID ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON  (33)
-
-	RIGHTPAREN  shift 70
-	.  error
-
-
-state 63
-	Prototype : Type ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON  (32)
-
-	RIGHTPAREN  shift 71
-	.  error
-
-
-state 64
-	VariableDecl_MULT : VariableDecl_MULT VariableDecl .  (9)
-
-	.  reduce 9
-
-
-state 65
-	StmtBlock : LEFTPAREN VariableDecl_MULT Stmt_MULT . RIGHTPAREN  (36)
-	Stmt_MULT : Stmt_MULT . Stmt  (37)
-
-	BREAK  shift 72
-	FOR  shift 73
-	IF  shift 74
-	PRINTLN  shift 75
-	RETURN  shift 76
-	WHILE  shift 77
-	LEFTPAREN  shift 51
-	RIGHTPAREN  shift 78
-	.  error
-
-	StmtBlock  goto 79
-	Stmt  goto 80
-	IfStmt  goto 81
-	WhileStmt  goto 82
-	ForStmt  goto 83
-	BreakStmt  goto 84
-	ReturnStmt  goto 85
-	PrintStmt  goto 86
-
-
-state 66
-	ClassDecl : CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE .  (26)
-
-	.  reduce 26
-
-
-state 67
-	Field : VariableDecl .  (27)
+	EXTEND : EXTENDS ID .  (27)
 
 	.  reduce 27
 
 
-state 68
-	Field : FunctionDecl .  (28)
+state 34
+	IMPLEMENT : IMPLEMENTS . ID_PLUS  (29)
 
-	.  reduce 28
+	ID  shift 59
+	.  error
 
-
-state 69
-	Field_MULT : Field_MULT Field .  (29)
-
-	.  reduce 29
+	ID_PLUS  goto 60
 
 
-state 70
-	Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON  (33)
+state 35
+	ClassDecl : CLASS ID EXTEND IMPLEMENT . LEFTBRACE Field_MULT RIGHTBRACE  (31)
 
-	SEMICOLON  shift 87
+	LEFTBRACE  shift 61
 	.  error
 
 
-state 71
-	Prototype : Type ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON  (32)
-
-	SEMICOLON  shift 88
-	.  error
-
-
-state 72
-	BreakStmt : BREAK . SEMICOLON  (49)
-
-	SEMICOLON  shift 89
-	.  error
-
-
-state 73
-	ForStmt : FOR . LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (48)
-
-	LEFTPAREN  shift 90
-	.  error
-
-
-state 74
-	IfStmt : IF . LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt  (46)
-
-	LEFTPAREN  shift 91
-	.  error
-
-
-state 75
-	PrintStmt : PRINTLN . LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON  (51)
-
-	LEFTPAREN  shift 92
-	.  error
-
-
-state 76
-	ReturnStmt : RETURN . Expr SEMICOLON  (50)
+state 36
+	InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT . RIGHTBRACE  (36)
+	Prototype_MULT : Prototype_MULT . Prototype  (39)
 
 	BOOLEAN  shift 1
 	DOUBLE  shift 3
 	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
 	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
+	VOID  shift 62
+	ID  shift 8
+	RIGHTBRACE  shift 63
 	.  error
 
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 107
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
+	Type  goto 64
+	Prototype  goto 65
 
 
-state 77
-	WhileStmt : WHILE . LEFTPAREN Expr RIGHTPAREN Stmt  (47)
+state 37
+	Variable_PLUS : Variable .  (21)
 
-	LEFTPAREN  shift 111
-	.  error
-
-
-state 78
-	StmtBlock : LEFTPAREN VariableDecl_MULT Stmt_MULT RIGHTPAREN .  (36)
-
-	.  reduce 36
+	.  reduce 21
 
 
-state 79
-	Stmt : StmtBlock .  (45)
+state 38
+	Variable : Type . ID  (11)
+	Variable : Type . ID ASSIGNOP Expr  (12)
+	Type : Type . LEFTBRACKET RIGHTBRACKET  (17)
 
-	.  reduce 45
-
-
-state 80
-	Stmt_MULT : Stmt_MULT Stmt .  (37)
-
-	.  reduce 37
-
-
-state 81
-	Stmt : IfStmt .  (39)
-
-	.  reduce 39
-
-
-state 82
-	Stmt : WhileStmt .  (40)
-
-	.  reduce 40
-
-
-state 83
-	Stmt : ForStmt .  (41)
-
-	.  reduce 41
-
-
-state 84
-	Stmt : BreakStmt .  (42)
-
-	.  reduce 42
-
-
-state 85
-	Stmt : ReturnStmt .  (43)
-
-	.  reduce 43
-
-
-state 86
-	Stmt : PrintStmt .  (44)
-
-	.  reduce 44
-
-
-state 87
-	Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .  (33)
-
-	.  reduce 33
-
-
-state 88
-	Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .  (32)
-
-	.  reduce 32
-
-
-state 89
-	BreakStmt : BREAK SEMICOLON .  (49)
-
-	.  reduce 49
-
-
-state 90
-	ForStmt : FOR LEFTPAREN . Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (48)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 112
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 91
-	IfStmt : IF LEFTPAREN . Expr RIGHTPAREN Stmt ELSE Stmt  (46)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 113
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 92
-	PrintStmt : PRINTLN LEFTPAREN . Expr_PLUS COMMA RIGHTPAREN SEMICOLON  (51)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 114
-	Expr_PLUS  goto 115
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 93
-	Expr : NEW . LEFTPAREN ID RIGHTPAREN  (74)
-
-	LEFTPAREN  shift 116
+	ID  shift 66
+	LEFTBRACKET  shift 24
 	.  error
 
 
-state 94
-	Expr : NEWARRAY . LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN  (75)
+state 39
+	FunctionDecl : VOID ID LEFTPAREN Formals . RIGHTPAREN StmtBlock  (20)
 
-	LEFTPAREN  shift 117
+	RIGHTPAREN  shift 67
 	.  error
 
 
-state 95
-	Constant : NULL .  (90)
+state 40
+	Variable_PLUS : Variable_PLUS . COMMA Variable  (22)
+	Formals : Variable_PLUS .  (23)
 
-	.  reduce 90
+	COMMA  shift 68
+	RIGHTPAREN  reduce 23
 
 
-state 96
-	Expr : READLN . LEFTPAREN RIGHTPAREN  (73)
+state 41
+	FunctionDecl : Type ID LEFTPAREN Formals . RIGHTPAREN StmtBlock  (19)
 
-	LEFTPAREN  shift 118
+	RIGHTPAREN  shift 69
 	.  error
 
 
-state 97
-	Expr : THIS .  (55)
+state 42
+	Expr : NEW . LEFTPAREN ID RIGHTPAREN  (80)
 
-	.  reduce 55
-
-
-98: reduce/reduce conflict (reduce 17, reduce 79) on LEFTBRACKET
-98: shift/reduce conflict (shift 120, reduce 79) on PERIOD
-state 98
-	Type : ID .  (17)
-	Lvalue : ID .  (79)
-	Call : ID . LEFTPAREN Actuals RIGHTPAREN  (82)
-	Call : ID . PERIOD ID LEFTPAREN Actuals RIGHTPAREN  (83)
-
-	LEFTPAREN  shift 119
-	PERIOD  shift 120
-	ID  reduce 17
-	RIGHTPAREN  reduce 79
-	LEFTBRACKET  reduce 17
-	RIGHTBRACKET  reduce 79
-	SEMICOLON  reduce 79
-	COMMA  reduce 79
-	MULTIPLICATION  reduce 79
-	DIVISION  reduce 79
-	MOD  reduce 79
-	PLUS  reduce 79
-	MINUS  reduce 79
-	LESS  reduce 79
-	LESSEQUAL  reduce 79
-	GREATER  reduce 79
-	GREATEREQUAL  reduce 79
-	EQUAL  reduce 79
-	NOTEQUAL  reduce 79
-	AND  reduce 79
-	OR  reduce 79
-	ASSIGNOP  reduce 79
-
-
-state 99
-	Expr : LEFTPAREN . Expr RIGHTPAREN  (57)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 121
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 100
-	Constant : INTCONSTANT .  (86)
-
-	.  reduce 86
-
-
-state 101
-	Constant : DOUBLECONSTANT .  (87)
-
-	.  reduce 87
-
-
-state 102
-	Constant : STRINGCONSTANT .  (88)
-
-	.  reduce 88
-
-
-state 103
-	Constant : BOOLEANCONSTANT .  (89)
-
-	.  reduce 89
-
-
-state 104
-	Expr : NOT . Expr  (72)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 122
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 105
-	Expr : MINUS . Expr  (63)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 123
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 106
-	Lvalue : Variable .  (78)
-
-	.  reduce 78
-
-
-state 107
-	ReturnStmt : RETURN Expr . SEMICOLON  (50)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	SEMICOLON  shift 124
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	LEFTPAREN  shift 70
 	.  error
 
 
-state 108
-	Expr : Lvalue . ASSIGNOP Expr  (52)
-	Expr : Lvalue .  (54)
-	Lvalue : Lvalue . LEFTBRACKET Expr RIGHTBRACKET  (80)
-	Lvalue : Lvalue . PERIOD ID  (81)
+state 43
+	Expr : NEWARRAY . LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN  (81)
 
-	LEFTBRACKET  shift 138
-	PERIOD  shift 139
-	ASSIGNOP  shift 140
-	RIGHTPAREN  reduce 54
-	RIGHTBRACKET  reduce 54
-	SEMICOLON  reduce 54
-	COMMA  reduce 54
-	MULTIPLICATION  reduce 54
-	DIVISION  reduce 54
-	MOD  reduce 54
-	PLUS  reduce 54
-	MINUS  reduce 54
-	LESS  reduce 54
-	LESSEQUAL  reduce 54
-	GREATER  reduce 54
-	GREATEREQUAL  reduce 54
-	EQUAL  reduce 54
-	NOTEQUAL  reduce 54
-	AND  reduce 54
-	OR  reduce 54
-
-
-state 109
-	Expr : Constant .  (53)
-
-	.  reduce 53
-
-
-state 110
-	Expr : Call .  (56)
-
-	.  reduce 56
-
-
-state 111
-	WhileStmt : WHILE LEFTPAREN . Expr RIGHTPAREN Stmt  (47)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 141
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 112
-	ForStmt : FOR LEFTPAREN Expr . SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (48)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	SEMICOLON  shift 142
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	LEFTPAREN  shift 71
 	.  error
 
 
-state 113
-	IfStmt : IF LEFTPAREN Expr . RIGHTPAREN Stmt ELSE Stmt  (46)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 44
+	Constant : NULL .  (95)
 
-	RIGHTPAREN  shift 143
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	.  reduce 95
+
+
+state 45
+	Expr : READLN . LEFTPAREN RIGHTPAREN  (79)
+
+	LEFTPAREN  shift 72
 	.  error
 
 
-state 114
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-	Expr_PLUS : Expr .  (76)
+state 46
+	Expr : THIS .  (61)
 
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	COMMA  reduce 76
+	.  reduce 61
 
 
-state 115
-	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS . COMMA RIGHTPAREN SEMICOLON  (51)
-	Expr_PLUS : Expr_PLUS . COMMA Expr  (77)
+47: shift/reduce conflict (shift 74, reduce 84) on PERIOD
+state 47
+	Lvalue : ID .  (84)
+	Call : ID . LEFTPAREN Actuals RIGHTPAREN  (87)
+	Call : ID . PERIOD ID LEFTPAREN Actuals RIGHTPAREN  (88)
 
-	COMMA  shift 144
+	LEFTPAREN  shift 73
+	PERIOD  shift 74
+	RIGHTPAREN  reduce 84
+	LEFTBRACKET  reduce 84
+	RIGHTBRACKET  reduce 84
+	SEMICOLON  reduce 84
+	COMMA  reduce 84
+	MULTIPLICATION  reduce 84
+	DIVISION  reduce 84
+	MOD  reduce 84
+	PLUS  reduce 84
+	MINUS  reduce 84
+	LESS  reduce 84
+	LESSEQUAL  reduce 84
+	GREATER  reduce 84
+	GREATEREQUAL  reduce 84
+	EQUAL  reduce 84
+	NOTEQUAL  reduce 84
+	AND  reduce 84
+	OR  reduce 84
+	ASSIGNOP  reduce 84
+
+
+state 48
+	Expr : LEFTPAREN . Expr RIGHTPAREN  (63)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
 	.  error
 
+	Expr  goto 75
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
 
-state 116
-	Expr : NEW LEFTPAREN . ID RIGHTPAREN  (74)
 
-	ID  shift 145
+state 49
+	Constant : INTCONSTANT .  (91)
+
+	.  reduce 91
+
+
+state 50
+	Constant : DOUBLECONSTANT .  (92)
+
+	.  reduce 92
+
+
+state 51
+	Constant : STRINGCONSTANT .  (93)
+
+	.  reduce 93
+
+
+state 52
+	Constant : BOOLEANCONSTANT .  (94)
+
+	.  reduce 94
+
+
+state 53
+	Expr : NOT . Expr  (78)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
 	.  error
 
+	Expr  goto 76
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
 
-state 117
-	Expr : NEWARRAY LEFTPAREN . INTCONSTANT COMMA Type RIGHTPAREN  (75)
 
-	INTCONSTANT  shift 146
+state 54
+	Expr : MINUS . Expr  (69)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
 	.  error
 
-
-state 118
-	Expr : READLN LEFTPAREN . RIGHTPAREN  (73)
-
-	RIGHTPAREN  shift 147
-	.  error
-
-
-state 119
-	Call : ID LEFTPAREN . Actuals RIGHTPAREN  (82)
-	Actuals : .  (85)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	RIGHTPAREN  reduce 85
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 114
-	Expr_PLUS  goto 148
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-	Actuals  goto 149
-
-
-state 120
-	Call : ID PERIOD . ID LEFTPAREN Actuals RIGHTPAREN  (83)
-
-	ID  shift 150
-	.  error
-
-
-state 121
-	Expr : LEFTPAREN Expr . RIGHTPAREN  (57)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	RIGHTPAREN  shift 151
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	.  error
-
-
-state 122
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-	Expr : NOT Expr .  (72)
-
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 72
-	RIGHTBRACKET  reduce 72
-	SEMICOLON  reduce 72
-	COMMA  reduce 72
-
-
-state 123
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : MINUS Expr .  (63)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 63
-	RIGHTBRACKET  reduce 63
-	SEMICOLON  reduce 63
-	COMMA  reduce 63
-	MULTIPLICATION  reduce 63
-	DIVISION  reduce 63
-	MOD  reduce 63
-	PLUS  reduce 63
-	MINUS  reduce 63
-
-
-state 124
-	ReturnStmt : RETURN Expr SEMICOLON .  (50)
-
-	.  reduce 50
-
-
-state 125
-	Expr : Expr MULTIPLICATION . Expr  (60)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 152
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 126
-	Expr : Expr DIVISION . Expr  (61)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 153
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 127
-	Expr : Expr MOD . Expr  (62)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 154
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 128
-	Expr : Expr PLUS . Expr  (58)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 155
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 129
-	Expr : Expr MINUS . Expr  (59)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 156
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 130
-	Expr : Expr LESS . Expr  (64)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 157
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 131
-	Expr : Expr LESSEQUAL . Expr  (65)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 158
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 132
-	Expr : Expr GREATER . Expr  (66)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 159
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 133
-	Expr : Expr GREATEREQUAL . Expr  (67)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 160
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 134
-	Expr : Expr EQUAL . Expr  (68)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 161
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 135
-	Expr : Expr NOTEQUAL . Expr  (69)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 162
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 136
-	Expr : Expr AND . Expr  (70)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 163
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 137
-	Expr : Expr OR . Expr  (71)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 164
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 138
-	Lvalue : Lvalue LEFTBRACKET . Expr RIGHTBRACKET  (80)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 165
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 139
-	Lvalue : Lvalue PERIOD . ID  (81)
-
-	ID  shift 166
-	.  error
-
-
-state 140
-	Expr : Lvalue ASSIGNOP . Expr  (52)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 167
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 141
-	WhileStmt : WHILE LEFTPAREN Expr . RIGHTPAREN Stmt  (47)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	RIGHTPAREN  shift 168
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	.  error
-
-
-state 142
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON . Expr SEMICOLON Expr RIGHTPAREN Stmt  (48)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 169
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 143
-	IfStmt : IF LEFTPAREN Expr RIGHTPAREN . Stmt ELSE Stmt  (46)
-
-	BREAK  shift 72
-	FOR  shift 73
-	IF  shift 74
-	PRINTLN  shift 75
-	RETURN  shift 76
-	WHILE  shift 77
-	LEFTPAREN  shift 51
-	.  error
-
-	StmtBlock  goto 79
-	Stmt  goto 170
-	IfStmt  goto 81
-	WhileStmt  goto 82
-	ForStmt  goto 83
-	BreakStmt  goto 84
-	ReturnStmt  goto 85
-	PrintStmt  goto 86
-
-
-state 144
-	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA . RIGHTPAREN SEMICOLON  (51)
-	Expr_PLUS : Expr_PLUS COMMA . Expr  (77)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	RIGHTPAREN  shift 171
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	.  error
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 172
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-
-
-state 145
-	Expr : NEW LEFTPAREN ID . RIGHTPAREN  (74)
-
-	RIGHTPAREN  shift 173
-	.  error
-
-
-state 146
-	Expr : NEWARRAY LEFTPAREN INTCONSTANT . COMMA Type RIGHTPAREN  (75)
-
-	COMMA  shift 174
-	.  error
-
-
-state 147
-	Expr : READLN LEFTPAREN RIGHTPAREN .  (73)
-
-	.  reduce 73
-
-
-state 148
-	Expr_PLUS : Expr_PLUS . COMMA Expr  (77)
-	Actuals : Expr_PLUS . COMMA  (84)
-
-	COMMA  shift 175
-	.  error
-
-
-state 149
-	Call : ID LEFTPAREN Actuals . RIGHTPAREN  (82)
-
-	RIGHTPAREN  shift 176
-	.  error
-
-
-state 150
-	Call : ID PERIOD ID . LEFTPAREN Actuals RIGHTPAREN  (83)
-
-	LEFTPAREN  shift 177
-	.  error
-
-
-state 151
-	Expr : LEFTPAREN Expr RIGHTPAREN .  (57)
-
-	.  reduce 57
-
-
-state 152
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr MULTIPLICATION Expr .  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	Expr  goto 77
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 55
+	Variable : Type ID ASSIGNOP Expr .  (12)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 12
+	SEMICOLON  reduce 12
+	COMMA  reduce 12
+
+
+state 56
+	Expr : Lvalue . ASSIGNOP Expr  (58)
+	Expr : Lvalue .  (60)
+	Lvalue : Lvalue . LEFTBRACKET Expr RIGHTBRACKET  (85)
+	Lvalue : Lvalue . PERIOD ID  (86)
+
+	LEFTBRACKET  shift 91
+	PERIOD  shift 92
+	ASSIGNOP  shift 93
 	RIGHTPAREN  reduce 60
 	RIGHTBRACKET  reduce 60
 	SEMICOLON  reduce 60
@@ -2206,341 +717,270 @@ state 152
 	MULTIPLICATION  reduce 60
 	DIVISION  reduce 60
 	MOD  reduce 60
+	PLUS  reduce 60
+	MINUS  reduce 60
+	LESS  reduce 60
+	LESSEQUAL  reduce 60
+	GREATER  reduce 60
+	GREATEREQUAL  reduce 60
+	EQUAL  reduce 60
+	NOTEQUAL  reduce 60
+	AND  reduce 60
+	OR  reduce 60
 
 
-state 153
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr DIVISION Expr .  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 57
+	Expr : Constant .  (59)
 
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 61
-	RIGHTBRACKET  reduce 61
-	SEMICOLON  reduce 61
-	COMMA  reduce 61
-	MULTIPLICATION  reduce 61
-	DIVISION  reduce 61
-	MOD  reduce 61
+	.  reduce 59
 
 
-state 154
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr MOD Expr .  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 58
+	Expr : Call .  (62)
 
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 62
-	RIGHTBRACKET  reduce 62
-	SEMICOLON  reduce 62
-	COMMA  reduce 62
-	MULTIPLICATION  reduce 62
-	DIVISION  reduce 62
-	MOD  reduce 62
+	.  reduce 62
 
 
-state 155
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr PLUS Expr .  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 59
+	ID_PLUS : ID .  (25)
 
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 58
-	RIGHTBRACKET  reduce 58
-	SEMICOLON  reduce 58
-	COMMA  reduce 58
-	MULTIPLICATION  reduce 58
-	DIVISION  reduce 58
-	MOD  reduce 58
-	PLUS  reduce 58
-	MINUS  reduce 58
+	.  reduce 25
 
 
-state 156
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr MINUS Expr .  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 60
+	ID_PLUS : ID_PLUS . COMMA ID  (26)
+	IMPLEMENT : IMPLEMENTS ID_PLUS .  (29)
 
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 59
-	RIGHTBRACKET  reduce 59
-	SEMICOLON  reduce 59
-	COMMA  reduce 59
-	MULTIPLICATION  reduce 59
-	DIVISION  reduce 59
-	MOD  reduce 59
-	PLUS  reduce 59
-	MINUS  reduce 59
+	COMMA  shift 94
+	LEFTBRACE  reduce 29
 
 
-state 157
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr LESS Expr .  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 61
+	ClassDecl : CLASS ID EXTEND IMPLEMENT LEFTBRACE . Field_MULT RIGHTBRACE  (31)
+	Field_MULT : .  (35)
 
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 64
-	RIGHTBRACKET  reduce 64
-	SEMICOLON  reduce 64
-	COMMA  reduce 64
-	MULTIPLICATION  reduce 64
-	DIVISION  reduce 64
-	MOD  reduce 64
-	PLUS  reduce 64
-	MINUS  reduce 64
-	LESS  reduce 64
-	LESSEQUAL  reduce 64
-	GREATER  reduce 64
-	GREATEREQUAL  reduce 64
+	.  reduce 35
+
+	Field_MULT  goto 95
 
 
-state 158
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr LESSEQUAL Expr .  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 62
+	Prototype : VOID . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON  (38)
 
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 65
-	RIGHTBRACKET  reduce 65
-	SEMICOLON  reduce 65
-	COMMA  reduce 65
-	MULTIPLICATION  reduce 65
-	DIVISION  reduce 65
-	MOD  reduce 65
-	PLUS  reduce 65
-	MINUS  reduce 65
-	LESS  reduce 65
-	LESSEQUAL  reduce 65
-	GREATER  reduce 65
-	GREATEREQUAL  reduce 65
+	ID  shift 96
+	.  error
 
 
-state 159
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr GREATER Expr .  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 63
+	InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE .  (36)
 
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 66
-	RIGHTBRACKET  reduce 66
-	SEMICOLON  reduce 66
-	COMMA  reduce 66
-	MULTIPLICATION  reduce 66
-	DIVISION  reduce 66
-	MOD  reduce 66
-	PLUS  reduce 66
-	MINUS  reduce 66
-	LESS  reduce 66
-	LESSEQUAL  reduce 66
-	GREATER  reduce 66
-	GREATEREQUAL  reduce 66
+	.  reduce 36
 
 
-state 160
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr GREATEREQUAL Expr .  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 64
+	Type : Type . LEFTBRACKET RIGHTBRACKET  (17)
+	Prototype : Type . ID LEFTPAREN Formals RIGHTPAREN SEMICOLON  (37)
 
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 67
-	RIGHTBRACKET  reduce 67
-	SEMICOLON  reduce 67
-	COMMA  reduce 67
-	MULTIPLICATION  reduce 67
-	DIVISION  reduce 67
-	MOD  reduce 67
-	PLUS  reduce 67
-	MINUS  reduce 67
-	LESS  reduce 67
-	LESSEQUAL  reduce 67
-	GREATER  reduce 67
-	GREATEREQUAL  reduce 67
+	ID  shift 97
+	LEFTBRACKET  shift 24
+	.  error
 
 
-state 161
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr EQUAL Expr .  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 65
+	Prototype_MULT : Prototype_MULT Prototype .  (39)
 
-	AND  shift 136
-	OR  shift 137
-	RIGHTPAREN  reduce 68
-	RIGHTBRACKET  reduce 68
-	SEMICOLON  reduce 68
-	COMMA  reduce 68
-	MULTIPLICATION  reduce 68
-	DIVISION  reduce 68
-	MOD  reduce 68
-	PLUS  reduce 68
-	MINUS  reduce 68
-	LESS  reduce 68
-	LESSEQUAL  reduce 68
-	GREATER  reduce 68
-	GREATEREQUAL  reduce 68
-	EQUAL  reduce 68
-	NOTEQUAL  reduce 68
+	.  reduce 39
 
 
-state 162
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr NOTEQUAL Expr .  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 66
+	Variable : Type ID .  (11)
+	Variable : Type ID . ASSIGNOP Expr  (12)
 
-	AND  shift 136
-	OR  shift 137
+	ASSIGNOP  shift 31
+	RIGHTPAREN  reduce 11
+	SEMICOLON  reduce 11
+	COMMA  reduce 11
+
+
+state 67
+	FunctionDecl : VOID ID LEFTPAREN Formals RIGHTPAREN . StmtBlock  (20)
+
+	LEFTBRACE  shift 98
+	.  error
+
+	StmtBlock  goto 99
+
+
+state 68
+	Variable_PLUS : Variable_PLUS COMMA . Variable  (22)
+
+	BOOLEAN  shift 1
+	DOUBLE  shift 3
+	INT  shift 4
+	STRING  shift 6
+	ID  shift 8
+	.  error
+
+	Variable  goto 100
+	Type  goto 38
+
+
+state 69
+	FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN . StmtBlock  (19)
+
+	LEFTBRACE  shift 98
+	.  error
+
+	StmtBlock  goto 101
+
+
+state 70
+	Expr : NEW LEFTPAREN . ID RIGHTPAREN  (80)
+
+	ID  shift 102
+	.  error
+
+
+state 71
+	Expr : NEWARRAY LEFTPAREN . INTCONSTANT COMMA Type RIGHTPAREN  (81)
+
+	INTCONSTANT  shift 103
+	.  error
+
+
+state 72
+	Expr : READLN LEFTPAREN . RIGHTPAREN  (79)
+
+	RIGHTPAREN  shift 104
+	.  error
+
+
+state 73
+	Call : ID LEFTPAREN . Actuals RIGHTPAREN  (87)
+	Actuals : .  (90)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	RIGHTPAREN  reduce 90
+
+	Expr  goto 105
+	Expr_PLUS  goto 106
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+	Actuals  goto 107
+
+
+state 74
+	Call : ID PERIOD . ID LEFTPAREN Actuals RIGHTPAREN  (88)
+
+	ID  shift 108
+	.  error
+
+
+state 75
+	Expr : LEFTPAREN Expr . RIGHTPAREN  (63)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	RIGHTPAREN  shift 109
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 76
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+	Expr : NOT Expr .  (78)
+
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 78
+	RIGHTBRACKET  reduce 78
+	SEMICOLON  reduce 78
+	COMMA  reduce 78
+
+
+state 77
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : MINUS Expr .  (69)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
 	RIGHTPAREN  reduce 69
 	RIGHTBRACKET  reduce 69
 	SEMICOLON  reduce 69
@@ -2550,31 +990,718 @@ state 162
 	MOD  reduce 69
 	PLUS  reduce 69
 	MINUS  reduce 69
-	LESS  reduce 69
-	LESSEQUAL  reduce 69
-	GREATER  reduce 69
-	GREATEREQUAL  reduce 69
-	EQUAL  reduce 69
-	NOTEQUAL  reduce 69
 
 
-state 163
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr AND Expr .  (70)
-	Expr : Expr . OR Expr  (71)
+state 78
+	Expr : Expr MULTIPLICATION . Expr  (66)
 
-	OR  shift 137
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 110
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 79
+	Expr : Expr DIVISION . Expr  (67)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 111
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 80
+	Expr : Expr MOD . Expr  (68)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 112
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 81
+	Expr : Expr PLUS . Expr  (64)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 113
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 82
+	Expr : Expr MINUS . Expr  (65)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 114
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 83
+	Expr : Expr LESS . Expr  (70)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 115
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 84
+	Expr : Expr LESSEQUAL . Expr  (71)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 116
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 85
+	Expr : Expr GREATER . Expr  (72)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 117
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 86
+	Expr : Expr GREATEREQUAL . Expr  (73)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 118
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 87
+	Expr : Expr EQUAL . Expr  (74)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 119
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 88
+	Expr : Expr NOTEQUAL . Expr  (75)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 120
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 89
+	Expr : Expr AND . Expr  (76)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 121
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 90
+	Expr : Expr OR . Expr  (77)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 122
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 91
+	Lvalue : Lvalue LEFTBRACKET . Expr RIGHTBRACKET  (85)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 123
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 92
+	Lvalue : Lvalue PERIOD . ID  (86)
+
+	ID  shift 124
+	.  error
+
+
+state 93
+	Expr : Lvalue ASSIGNOP . Expr  (58)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 125
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 94
+	ID_PLUS : ID_PLUS COMMA . ID  (26)
+
+	ID  shift 126
+	.  error
+
+
+state 95
+	ClassDecl : CLASS ID EXTEND IMPLEMENT LEFTBRACE Field_MULT . RIGHTBRACE  (31)
+	Field_MULT : Field_MULT . Field  (34)
+
+	BOOLEAN  shift 1
+	DOUBLE  shift 3
+	INT  shift 4
+	STRING  shift 6
+	VOID  shift 7
+	ID  shift 8
+	RIGHTBRACE  shift 127
+	.  error
+
+	VariableDecl  goto 128
+	FunctionDecl  goto 129
+	Variable  goto 16
+	Type  goto 17
+	Field  goto 130
+
+
+state 96
+	Prototype : VOID ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON  (38)
+
+	LEFTPAREN  shift 131
+	.  error
+
+
+state 97
+	Prototype : Type ID . LEFTPAREN Formals RIGHTPAREN SEMICOLON  (37)
+
+	LEFTPAREN  shift 132
+	.  error
+
+
+state 98
+	StmtBlock : LEFTBRACE . VariableDecl_MULT Stmt_MULT RIGHTBRACE  (41)
+	VariableDecl_MULT : .  (10)
+
+	.  reduce 10
+
+	VariableDecl_MULT  goto 133
+
+
+state 99
+	FunctionDecl : VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock .  (20)
+
+	.  reduce 20
+
+
+state 100
+	Variable_PLUS : Variable_PLUS COMMA Variable .  (22)
+
+	.  reduce 22
+
+
+state 101
+	FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock .  (19)
+
+	.  reduce 19
+
+
+state 102
+	Expr : NEW LEFTPAREN ID . RIGHTPAREN  (80)
+
+	RIGHTPAREN  shift 134
+	.  error
+
+
+state 103
+	Expr : NEWARRAY LEFTPAREN INTCONSTANT . COMMA Type RIGHTPAREN  (81)
+
+	COMMA  shift 135
+	.  error
+
+
+state 104
+	Expr : READLN LEFTPAREN RIGHTPAREN .  (79)
+
+	.  reduce 79
+
+
+state 105
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+	Expr_PLUS : Expr .  (82)
+
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	COMMA  reduce 82
+
+
+state 106
+	Expr_PLUS : Expr_PLUS . COMMA Expr  (83)
+	Actuals : Expr_PLUS . COMMA  (89)
+
+	COMMA  shift 136
+	.  error
+
+
+state 107
+	Call : ID LEFTPAREN Actuals . RIGHTPAREN  (87)
+
+	RIGHTPAREN  shift 137
+	.  error
+
+
+state 108
+	Call : ID PERIOD ID . LEFTPAREN Actuals RIGHTPAREN  (88)
+
+	LEFTPAREN  shift 138
+	.  error
+
+
+state 109
+	Expr : LEFTPAREN Expr RIGHTPAREN .  (63)
+
+	.  reduce 63
+
+
+state 110
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr MULTIPLICATION Expr .  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 66
+	RIGHTBRACKET  reduce 66
+	SEMICOLON  reduce 66
+	COMMA  reduce 66
+	MULTIPLICATION  reduce 66
+	DIVISION  reduce 66
+	MOD  reduce 66
+
+
+state 111
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr DIVISION Expr .  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 67
+	RIGHTBRACKET  reduce 67
+	SEMICOLON  reduce 67
+	COMMA  reduce 67
+	MULTIPLICATION  reduce 67
+	DIVISION  reduce 67
+	MOD  reduce 67
+
+
+state 112
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr MOD Expr .  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 68
+	RIGHTBRACKET  reduce 68
+	SEMICOLON  reduce 68
+	COMMA  reduce 68
+	MULTIPLICATION  reduce 68
+	DIVISION  reduce 68
+	MOD  reduce 68
+
+
+state 113
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr PLUS Expr .  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 64
+	RIGHTBRACKET  reduce 64
+	SEMICOLON  reduce 64
+	COMMA  reduce 64
+	MULTIPLICATION  reduce 64
+	DIVISION  reduce 64
+	MOD  reduce 64
+	PLUS  reduce 64
+	MINUS  reduce 64
+
+
+state 114
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr MINUS Expr .  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 65
+	RIGHTBRACKET  reduce 65
+	SEMICOLON  reduce 65
+	COMMA  reduce 65
+	MULTIPLICATION  reduce 65
+	DIVISION  reduce 65
+	MOD  reduce 65
+	PLUS  reduce 65
+	MINUS  reduce 65
+
+
+state 115
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr LESS Expr .  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
 	RIGHTPAREN  reduce 70
 	RIGHTBRACKET  reduce 70
 	SEMICOLON  reduce 70
@@ -2588,197 +1715,405 @@ state 163
 	LESSEQUAL  reduce 70
 	GREATER  reduce 70
 	GREATEREQUAL  reduce 70
-	EQUAL  reduce 70
-	NOTEQUAL  reduce 70
-	AND  reduce 70
 
 
-state 164
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-	Expr : Expr OR Expr .  (71)
+state 116
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr LESSEQUAL Expr .  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
 
-	.  reduce 71
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 71
+	RIGHTBRACKET  reduce 71
+	SEMICOLON  reduce 71
+	COMMA  reduce 71
+	MULTIPLICATION  reduce 71
+	DIVISION  reduce 71
+	MOD  reduce 71
+	PLUS  reduce 71
+	MINUS  reduce 71
+	LESS  reduce 71
+	LESSEQUAL  reduce 71
+	GREATER  reduce 71
+	GREATEREQUAL  reduce 71
 
 
-state 165
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-	Lvalue : Lvalue LEFTBRACKET Expr . RIGHTBRACKET  (80)
+state 117
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr GREATER Expr .  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
 
-	RIGHTBRACKET  shift 178
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 72
+	RIGHTBRACKET  reduce 72
+	SEMICOLON  reduce 72
+	COMMA  reduce 72
+	MULTIPLICATION  reduce 72
+	DIVISION  reduce 72
+	MOD  reduce 72
+	PLUS  reduce 72
+	MINUS  reduce 72
+	LESS  reduce 72
+	LESSEQUAL  reduce 72
+	GREATER  reduce 72
+	GREATEREQUAL  reduce 72
+
+
+state 118
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr GREATEREQUAL Expr .  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 73
+	RIGHTBRACKET  reduce 73
+	SEMICOLON  reduce 73
+	COMMA  reduce 73
+	MULTIPLICATION  reduce 73
+	DIVISION  reduce 73
+	MOD  reduce 73
+	PLUS  reduce 73
+	MINUS  reduce 73
+	LESS  reduce 73
+	LESSEQUAL  reduce 73
+	GREATER  reduce 73
+	GREATEREQUAL  reduce 73
+
+
+state 119
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr EQUAL Expr .  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 74
+	RIGHTBRACKET  reduce 74
+	SEMICOLON  reduce 74
+	COMMA  reduce 74
+	MULTIPLICATION  reduce 74
+	DIVISION  reduce 74
+	MOD  reduce 74
+	PLUS  reduce 74
+	MINUS  reduce 74
+	LESS  reduce 74
+	LESSEQUAL  reduce 74
+	GREATER  reduce 74
+	GREATEREQUAL  reduce 74
+	EQUAL  reduce 74
+	NOTEQUAL  reduce 74
+
+
+state 120
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr NOTEQUAL Expr .  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	AND  shift 89
+	OR  shift 90
+	RIGHTPAREN  reduce 75
+	RIGHTBRACKET  reduce 75
+	SEMICOLON  reduce 75
+	COMMA  reduce 75
+	MULTIPLICATION  reduce 75
+	DIVISION  reduce 75
+	MOD  reduce 75
+	PLUS  reduce 75
+	MINUS  reduce 75
+	LESS  reduce 75
+	LESSEQUAL  reduce 75
+	GREATER  reduce 75
+	GREATEREQUAL  reduce 75
+	EQUAL  reduce 75
+	NOTEQUAL  reduce 75
+
+
+state 121
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr AND Expr .  (76)
+	Expr : Expr . OR Expr  (77)
+
+	OR  shift 90
+	RIGHTPAREN  reduce 76
+	RIGHTBRACKET  reduce 76
+	SEMICOLON  reduce 76
+	COMMA  reduce 76
+	MULTIPLICATION  reduce 76
+	DIVISION  reduce 76
+	MOD  reduce 76
+	PLUS  reduce 76
+	MINUS  reduce 76
+	LESS  reduce 76
+	LESSEQUAL  reduce 76
+	GREATER  reduce 76
+	GREATEREQUAL  reduce 76
+	EQUAL  reduce 76
+	NOTEQUAL  reduce 76
+	AND  reduce 76
+
+
+state 122
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+	Expr : Expr OR Expr .  (77)
+
+	.  reduce 77
+
+
+state 123
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+	Lvalue : Lvalue LEFTBRACKET Expr . RIGHTBRACKET  (85)
+
+	RIGHTBRACKET  shift 139
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
 	.  error
 
 
-state 166
-	Lvalue : Lvalue PERIOD ID .  (81)
+state 124
+	Lvalue : Lvalue PERIOD ID .  (86)
 
-	.  reduce 81
-
-
-state 167
-	Expr : Lvalue ASSIGNOP Expr .  (52)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-
-	.  reduce 52
+	.  reduce 86
 
 
-state 168
-	WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN . Stmt  (47)
+state 125
+	Expr : Lvalue ASSIGNOP Expr .  (58)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
 
-	BREAK  shift 72
-	FOR  shift 73
-	IF  shift 74
-	PRINTLN  shift 75
-	RETURN  shift 76
-	WHILE  shift 77
-	LEFTPAREN  shift 51
-	.  error
-
-	StmtBlock  goto 79
-	Stmt  goto 179
-	IfStmt  goto 81
-	WhileStmt  goto 82
-	ForStmt  goto 83
-	BreakStmt  goto 84
-	ReturnStmt  goto 85
-	PrintStmt  goto 86
+	.  reduce 58
 
 
-state 169
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr . SEMICOLON Expr RIGHTPAREN Stmt  (48)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 126
+	ID_PLUS : ID_PLUS COMMA ID .  (26)
 
-	SEMICOLON  shift 180
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	.  error
+	.  reduce 26
 
 
-state 170
-	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt . ELSE Stmt  (46)
+state 127
+	ClassDecl : CLASS ID EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE .  (31)
 
-	ELSE  shift 181
-	.  error
-
-
-state 171
-	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN . SEMICOLON  (51)
-
-	SEMICOLON  shift 182
-	.  error
+	.  reduce 31
 
 
-state 172
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
-	Expr_PLUS : Expr_PLUS COMMA Expr .  (77)
+state 128
+	Field : VariableDecl .  (32)
 
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
-	COMMA  reduce 77
+	.  reduce 32
 
 
-state 173
-	Expr : NEW LEFTPAREN ID RIGHTPAREN .  (74)
+state 129
+	Field : FunctionDecl .  (33)
 
-	.  reduce 74
+	.  reduce 33
 
 
-state 174
-	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA . Type RIGHTPAREN  (75)
+state 130
+	Field_MULT : Field_MULT Field .  (34)
+
+	.  reduce 34
+
+
+state 131
+	Prototype : VOID ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON  (38)
+	Formals : .  (24)
+
+	BOOLEAN  shift 1
+	DOUBLE  shift 3
+	INT  shift 4
+	STRING  shift 6
+	ID  shift 8
+	RIGHTPAREN  reduce 24
+
+	Variable  goto 37
+	Type  goto 38
+	Formals  goto 140
+	Variable_PLUS  goto 40
+
+
+state 132
+	Prototype : Type ID LEFTPAREN . Formals RIGHTPAREN SEMICOLON  (37)
+	Formals : .  (24)
+
+	BOOLEAN  shift 1
+	DOUBLE  shift 3
+	INT  shift 4
+	STRING  shift 6
+	ID  shift 8
+	RIGHTPAREN  reduce 24
+
+	Variable  goto 37
+	Type  goto 38
+	Formals  goto 141
+	Variable_PLUS  goto 40
+
+
+133: shift/reduce conflict (shift 8, reduce 51) on ID
+state 133
+	VariableDecl_MULT : VariableDecl_MULT . VariableDecl  (9)
+	StmtBlock : LEFTBRACE VariableDecl_MULT . Stmt_MULT RIGHTBRACE  (41)
+	Stmt_MULT : .  (51)
+
+	BOOLEAN  shift 1
+	DOUBLE  shift 3
+	INT  shift 4
+	STRING  shift 6
+	ID  shift 8
+	BREAK  reduce 51
+	FOR  reduce 51
+	IF  reduce 51
+	NEW  reduce 51
+	NEWARRAY  reduce 51
+	NULL  reduce 51
+	PRINTLN  reduce 51
+	READLN  reduce 51
+	RETURN  reduce 51
+	THIS  reduce 51
+	WHILE  reduce 51
+	LEFTPAREN  reduce 51
+	LEFTBRACE  reduce 51
+	RIGHTBRACE  reduce 51
+	INTCONSTANT  reduce 51
+	DOUBLECONSTANT  reduce 51
+	STRINGCONSTANT  reduce 51
+	BOOLEANCONSTANT  reduce 51
+	NOT  reduce 51
+	MINUS  reduce 51
+
+	VariableDecl  goto 142
+	Variable  goto 16
+	Type  goto 38
+	Stmt_MULT  goto 143
+
+
+state 134
+	Expr : NEW LEFTPAREN ID RIGHTPAREN .  (80)
+
+	.  reduce 80
+
+
+state 135
+	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA . Type RIGHTPAREN  (81)
 
 	BOOLEAN  shift 1
 	DOUBLE  shift 3
@@ -2787,246 +2122,958 @@ state 174
 	ID  shift 8
 	.  error
 
-	Type  goto 183
+	Type  goto 144
 
 
-state 175
-	Expr_PLUS : Expr_PLUS COMMA . Expr  (77)
-	Actuals : Expr_PLUS COMMA .  (84)
+state 136
+	Expr_PLUS : Expr_PLUS COMMA . Expr  (83)
+	Actuals : Expr_PLUS COMMA .  (89)
 
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	RIGHTPAREN  reduce 84
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	RIGHTPAREN  reduce 89
 
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 172
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
+	Expr  goto 145
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
 
 
-state 176
-	Call : ID LEFTPAREN Actuals RIGHTPAREN .  (82)
+state 137
+	Call : ID LEFTPAREN Actuals RIGHTPAREN .  (87)
 
-	.  reduce 82
-
-
-state 177
-	Call : ID PERIOD ID LEFTPAREN . Actuals RIGHTPAREN  (83)
-	Actuals : .  (85)
-
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
-	RIGHTPAREN  reduce 85
-
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 114
-	Expr_PLUS  goto 148
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
-	Actuals  goto 184
+	.  reduce 87
 
 
-state 178
-	Lvalue : Lvalue LEFTBRACKET Expr RIGHTBRACKET .  (80)
+state 138
+	Call : ID PERIOD ID LEFTPAREN . Actuals RIGHTPAREN  (88)
+	Actuals : .  (90)
 
-	.  reduce 80
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	RIGHTPAREN  reduce 90
+
+	Expr  goto 105
+	Expr_PLUS  goto 106
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+	Actuals  goto 146
 
 
-state 179
-	WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN Stmt .  (47)
+state 139
+	Lvalue : Lvalue LEFTBRACKET Expr RIGHTBRACKET .  (85)
 
-	.  reduce 47
+	.  reduce 85
 
 
-state 180
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON . Expr RIGHTPAREN Stmt  (48)
+state 140
+	Prototype : VOID ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON  (38)
 
-	BOOLEAN  shift 1
-	DOUBLE  shift 3
-	INT  shift 4
-	NEW  shift 93
-	NEWARRAY  shift 94
-	NULL  shift 95
-	READLN  shift 96
-	STRING  shift 6
-	THIS  shift 97
-	ID  shift 98
-	LEFTPAREN  shift 99
-	INTCONSTANT  shift 100
-	DOUBLECONSTANT  shift 101
-	STRINGCONSTANT  shift 102
-	BOOLEANCONSTANT  shift 103
-	NOT  shift 104
-	MINUS  shift 105
+	RIGHTPAREN  shift 147
 	.  error
 
-	Variable  goto 106
-	Type  goto 34
-	Expr  goto 185
-	Lvalue  goto 108
-	Constant  goto 109
-	Call  goto 110
 
+state 141
+	Prototype : Type ID LEFTPAREN Formals . RIGHTPAREN SEMICOLON  (37)
 
-state 181
-	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE . Stmt  (46)
-
-	BREAK  shift 72
-	FOR  shift 73
-	IF  shift 74
-	PRINTLN  shift 75
-	RETURN  shift 76
-	WHILE  shift 77
-	LEFTPAREN  shift 51
+	RIGHTPAREN  shift 148
 	.  error
 
-	StmtBlock  goto 79
-	Stmt  goto 186
-	IfStmt  goto 81
-	WhileStmt  goto 82
-	ForStmt  goto 83
-	BreakStmt  goto 84
-	ReturnStmt  goto 85
-	PrintStmt  goto 86
+
+state 142
+	VariableDecl_MULT : VariableDecl_MULT VariableDecl .  (9)
+
+	.  reduce 9
 
 
-state 182
-	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON .  (51)
+state 143
+	StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT . RIGHTBRACE  (41)
+	Stmt_MULT : Stmt_MULT . Stmt  (50)
 
-	.  reduce 51
+	BREAK  shift 149
+	FOR  shift 150
+	IF  shift 151
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	PRINTLN  shift 152
+	READLN  shift 45
+	RETURN  shift 153
+	THIS  shift 46
+	WHILE  shift 154
+	ID  shift 47
+	LEFTPAREN  shift 48
+	LEFTBRACE  shift 98
+	RIGHTBRACE  shift 155
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 156
+	StmtBlock  goto 157
+	Stmt  goto 158
+	IfStmt  goto 159
+	WhileStmt  goto 160
+	ForStmt  goto 161
+	BreakStmt  goto 162
+	ReturnStmt  goto 163
+	PrintStmt  goto 164
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
 
 
-state 183
-	Type : Type . LEFTBRACKET RIGHTBRACKET  (16)
-	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA Type . RIGHTPAREN  (75)
+state 144
+	Type : Type . LEFTBRACKET RIGHTBRACKET  (17)
+	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA Type . RIGHTPAREN  (81)
 
-	RIGHTPAREN  shift 187
+	RIGHTPAREN  shift 165
 	LEFTBRACKET  shift 24
 	.  error
 
 
-state 184
-	Call : ID PERIOD ID LEFTPAREN Actuals . RIGHTPAREN  (83)
+state 145
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+	Expr_PLUS : Expr_PLUS COMMA Expr .  (83)
 
-	RIGHTPAREN  shift 188
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	COMMA  reduce 83
+
+
+state 146
+	Call : ID PERIOD ID LEFTPAREN Actuals . RIGHTPAREN  (88)
+
+	RIGHTPAREN  shift 166
 	.  error
 
 
-state 185
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr . RIGHTPAREN Stmt  (48)
-	Expr : Expr . PLUS Expr  (58)
-	Expr : Expr . MINUS Expr  (59)
-	Expr : Expr . MULTIPLICATION Expr  (60)
-	Expr : Expr . DIVISION Expr  (61)
-	Expr : Expr . MOD Expr  (62)
-	Expr : Expr . LESS Expr  (64)
-	Expr : Expr . LESSEQUAL Expr  (65)
-	Expr : Expr . GREATER Expr  (66)
-	Expr : Expr . GREATEREQUAL Expr  (67)
-	Expr : Expr . EQUAL Expr  (68)
-	Expr : Expr . NOTEQUAL Expr  (69)
-	Expr : Expr . AND Expr  (70)
-	Expr : Expr . OR Expr  (71)
+state 147
+	Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON  (38)
 
-	RIGHTPAREN  shift 189
-	MULTIPLICATION  shift 125
-	DIVISION  shift 126
-	MOD  shift 127
-	PLUS  shift 128
-	MINUS  shift 129
-	LESS  shift 130
-	LESSEQUAL  shift 131
-	GREATER  shift 132
-	GREATEREQUAL  shift 133
-	EQUAL  shift 134
-	NOTEQUAL  shift 135
-	AND  shift 136
-	OR  shift 137
+	SEMICOLON  shift 167
 	.  error
 
 
-state 186
-	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt .  (46)
+state 148
+	Prototype : Type ID LEFTPAREN Formals RIGHTPAREN . SEMICOLON  (37)
+
+	SEMICOLON  shift 168
+	.  error
+
+
+state 149
+	BreakStmt : BREAK . SEMICOLON  (55)
+
+	SEMICOLON  shift 169
+	.  error
+
+
+state 150
+	ForStmt : FOR . LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (54)
+
+	LEFTPAREN  shift 170
+	.  error
+
+
+state 151
+	IfStmt : IF . LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt  (52)
+
+	LEFTPAREN  shift 171
+	.  error
+
+
+state 152
+	PrintStmt : PRINTLN . LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON  (57)
+
+	LEFTPAREN  shift 172
+	.  error
+
+
+state 153
+	ReturnStmt : RETURN . Expr SEMICOLON  (56)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 173
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 154
+	WhileStmt : WHILE . LEFTPAREN Expr RIGHTPAREN Stmt  (53)
+
+	LEFTPAREN  shift 174
+	.  error
+
+
+state 155
+	StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE .  (41)
+
+	.  reduce 41
+
+
+state 156
+	Stmt : Expr . SEMICOLON  (42)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	SEMICOLON  shift 175
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 157
+	Stmt : StmtBlock .  (49)
+
+	.  reduce 49
+
+
+state 158
+	Stmt_MULT : Stmt_MULT Stmt .  (50)
+
+	.  reduce 50
+
+
+state 159
+	Stmt : IfStmt .  (43)
+
+	.  reduce 43
+
+
+state 160
+	Stmt : WhileStmt .  (44)
+
+	.  reduce 44
+
+
+state 161
+	Stmt : ForStmt .  (45)
+
+	.  reduce 45
+
+
+state 162
+	Stmt : BreakStmt .  (46)
 
 	.  reduce 46
 
 
-state 187
-	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN .  (75)
+state 163
+	Stmt : ReturnStmt .  (47)
 
-	.  reduce 75
-
-
-state 188
-	Call : ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN .  (83)
-
-	.  reduce 83
+	.  reduce 47
 
 
-state 189
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN . Stmt  (48)
-
-	BREAK  shift 72
-	FOR  shift 73
-	IF  shift 74
-	PRINTLN  shift 75
-	RETURN  shift 76
-	WHILE  shift 77
-	LEFTPAREN  shift 51
-	.  error
-
-	StmtBlock  goto 79
-	Stmt  goto 190
-	IfStmt  goto 81
-	WhileStmt  goto 82
-	ForStmt  goto 83
-	BreakStmt  goto 84
-	ReturnStmt  goto 85
-	PrintStmt  goto 86
-
-
-state 190
-	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt .  (48)
+state 164
+	Stmt : PrintStmt .  (48)
 
 	.  reduce 48
 
 
-State 98 contains 1 shift/reduce conflict, 1 reduce/reduce conflict.
+state 165
+	Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN .  (81)
+
+	.  reduce 81
 
 
-57 terminals, 33 nonterminals
-91 grammar rules, 191 states
+state 166
+	Call : ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN .  (88)
+
+	.  reduce 88
+
+
+state 167
+	Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .  (38)
+
+	.  reduce 38
+
+
+state 168
+	Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON .  (37)
+
+	.  reduce 37
+
+
+state 169
+	BreakStmt : BREAK SEMICOLON .  (55)
+
+	.  reduce 55
+
+
+state 170
+	ForStmt : FOR LEFTPAREN . Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (54)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 176
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 171
+	IfStmt : IF LEFTPAREN . Expr RIGHTPAREN Stmt ELSE Stmt  (52)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 177
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 172
+	PrintStmt : PRINTLN LEFTPAREN . Expr_PLUS COMMA RIGHTPAREN SEMICOLON  (57)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 105
+	Expr_PLUS  goto 178
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 173
+	ReturnStmt : RETURN Expr . SEMICOLON  (56)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	SEMICOLON  shift 179
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 174
+	WhileStmt : WHILE LEFTPAREN . Expr RIGHTPAREN Stmt  (53)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 180
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 175
+	Stmt : Expr SEMICOLON .  (42)
+
+	.  reduce 42
+
+
+state 176
+	ForStmt : FOR LEFTPAREN Expr . SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt  (54)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	SEMICOLON  shift 181
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 177
+	IfStmt : IF LEFTPAREN Expr . RIGHTPAREN Stmt ELSE Stmt  (52)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	RIGHTPAREN  shift 182
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 178
+	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS . COMMA RIGHTPAREN SEMICOLON  (57)
+	Expr_PLUS : Expr_PLUS . COMMA Expr  (83)
+
+	COMMA  shift 183
+	.  error
+
+
+state 179
+	ReturnStmt : RETURN Expr SEMICOLON .  (56)
+
+	.  reduce 56
+
+
+state 180
+	WhileStmt : WHILE LEFTPAREN Expr . RIGHTPAREN Stmt  (53)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	RIGHTPAREN  shift 184
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 181
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON . Expr SEMICOLON Expr RIGHTPAREN Stmt  (54)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 185
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 182
+	IfStmt : IF LEFTPAREN Expr RIGHTPAREN . Stmt ELSE Stmt  (52)
+
+	BREAK  shift 149
+	FOR  shift 150
+	IF  shift 151
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	PRINTLN  shift 152
+	READLN  shift 45
+	RETURN  shift 153
+	THIS  shift 46
+	WHILE  shift 154
+	ID  shift 47
+	LEFTPAREN  shift 48
+	LEFTBRACE  shift 98
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 156
+	StmtBlock  goto 157
+	Stmt  goto 186
+	IfStmt  goto 159
+	WhileStmt  goto 160
+	ForStmt  goto 161
+	BreakStmt  goto 162
+	ReturnStmt  goto 163
+	PrintStmt  goto 164
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 183
+	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA . RIGHTPAREN SEMICOLON  (57)
+	Expr_PLUS : Expr_PLUS COMMA . Expr  (83)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	RIGHTPAREN  shift 187
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 145
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 184
+	WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN . Stmt  (53)
+
+	BREAK  shift 149
+	FOR  shift 150
+	IF  shift 151
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	PRINTLN  shift 152
+	READLN  shift 45
+	RETURN  shift 153
+	THIS  shift 46
+	WHILE  shift 154
+	ID  shift 47
+	LEFTPAREN  shift 48
+	LEFTBRACE  shift 98
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 156
+	StmtBlock  goto 157
+	Stmt  goto 188
+	IfStmt  goto 159
+	WhileStmt  goto 160
+	ForStmt  goto 161
+	BreakStmt  goto 162
+	ReturnStmt  goto 163
+	PrintStmt  goto 164
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 185
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr . SEMICOLON Expr RIGHTPAREN Stmt  (54)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	SEMICOLON  shift 189
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 186
+	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt . ELSE Stmt  (52)
+
+	ELSE  shift 190
+	.  error
+
+
+state 187
+	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN . SEMICOLON  (57)
+
+	SEMICOLON  shift 191
+	.  error
+
+
+state 188
+	WhileStmt : WHILE LEFTPAREN Expr RIGHTPAREN Stmt .  (53)
+
+	.  reduce 53
+
+
+state 189
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON . Expr RIGHTPAREN Stmt  (54)
+
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	READLN  shift 45
+	THIS  shift 46
+	ID  shift 47
+	LEFTPAREN  shift 48
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 192
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 190
+	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE . Stmt  (52)
+
+	BREAK  shift 149
+	FOR  shift 150
+	IF  shift 151
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	PRINTLN  shift 152
+	READLN  shift 45
+	RETURN  shift 153
+	THIS  shift 46
+	WHILE  shift 154
+	ID  shift 47
+	LEFTPAREN  shift 48
+	LEFTBRACE  shift 98
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 156
+	StmtBlock  goto 157
+	Stmt  goto 193
+	IfStmt  goto 159
+	WhileStmt  goto 160
+	ForStmt  goto 161
+	BreakStmt  goto 162
+	ReturnStmt  goto 163
+	PrintStmt  goto 164
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 191
+	PrintStmt : PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON .  (57)
+
+	.  reduce 57
+
+
+state 192
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr . RIGHTPAREN Stmt  (54)
+	Expr : Expr . PLUS Expr  (64)
+	Expr : Expr . MINUS Expr  (65)
+	Expr : Expr . MULTIPLICATION Expr  (66)
+	Expr : Expr . DIVISION Expr  (67)
+	Expr : Expr . MOD Expr  (68)
+	Expr : Expr . LESS Expr  (70)
+	Expr : Expr . LESSEQUAL Expr  (71)
+	Expr : Expr . GREATER Expr  (72)
+	Expr : Expr . GREATEREQUAL Expr  (73)
+	Expr : Expr . EQUAL Expr  (74)
+	Expr : Expr . NOTEQUAL Expr  (75)
+	Expr : Expr . AND Expr  (76)
+	Expr : Expr . OR Expr  (77)
+
+	RIGHTPAREN  shift 194
+	MULTIPLICATION  shift 78
+	DIVISION  shift 79
+	MOD  shift 80
+	PLUS  shift 81
+	MINUS  shift 82
+	LESS  shift 83
+	LESSEQUAL  shift 84
+	GREATER  shift 85
+	GREATEREQUAL  shift 86
+	EQUAL  shift 87
+	NOTEQUAL  shift 88
+	AND  shift 89
+	OR  shift 90
+	.  error
+
+
+state 193
+	IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt .  (52)
+
+	.  reduce 52
+
+
+state 194
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN . Stmt  (54)
+
+	BREAK  shift 149
+	FOR  shift 150
+	IF  shift 151
+	NEW  shift 42
+	NEWARRAY  shift 43
+	NULL  shift 44
+	PRINTLN  shift 152
+	READLN  shift 45
+	RETURN  shift 153
+	THIS  shift 46
+	WHILE  shift 154
+	ID  shift 47
+	LEFTPAREN  shift 48
+	LEFTBRACE  shift 98
+	INTCONSTANT  shift 49
+	DOUBLECONSTANT  shift 50
+	STRINGCONSTANT  shift 51
+	BOOLEANCONSTANT  shift 52
+	NOT  shift 53
+	MINUS  shift 54
+	.  error
+
+	Expr  goto 156
+	StmtBlock  goto 157
+	Stmt  goto 195
+	IfStmt  goto 159
+	WhileStmt  goto 160
+	ForStmt  goto 161
+	BreakStmt  goto 162
+	ReturnStmt  goto 163
+	PrintStmt  goto 164
+	Lvalue  goto 56
+	Constant  goto 57
+	Call  goto 58
+
+
+state 195
+	ForStmt : FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt .  (54)
+
+	.  reduce 54
+
+
+State 47 contains 1 shift/reduce conflict.
+State 133 contains 1 shift/reduce conflict.
+
+
+56 terminals, 35 nonterminals
+96 grammar rules, 196 states

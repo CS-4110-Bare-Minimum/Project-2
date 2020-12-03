@@ -710,7 +710,6 @@ class Yylex {
       }
 
       identifiers.print();
-
   yyclose();    }
   }
 
@@ -819,257 +818,259 @@ class Yylex {
             // fall through
           case 55: break;
           case 3:
-            { return Parser.NOT;
+            { System.out.print("NOT"); return Parser.NOT;
             }
             // fall through
           case 56: break;
           case 4:
-            { return Parser.MOD;
+            { System.out.print("MOD"); return Parser.MOD;
             }
             // fall through
           case 57: break;
           case 5:
-            { return Parser.LEFTPAREN;
+            { System.out.print("LEFTPAREN"); return Parser.LEFTPAREN;
             }
             // fall through
           case 58: break;
           case 6:
-            { return Parser.RIGHTPAREN;
+            { System.out.print("RIGHTPAREN"); return Parser.RIGHTPAREN;
             }
             // fall through
           case 59: break;
           case 7:
-            { return Parser.MULTIPLICATION;
+            { System.out.print("MULTIPLICATION"); return Parser.MULTIPLICATION;
             }
             // fall through
           case 60: break;
           case 8:
-            { return Parser.PLUS;
+            { System.out.print("PLUS"); return Parser.PLUS;
             }
             // fall through
           case 61: break;
           case 9:
-            { return Parser.COMMA;
+            { System.out.print("COMMA"); return Parser.COMMA;
             }
             // fall through
           case 62: break;
           case 10:
-            { return Parser.MINUS;
+            { System.out.print("MINUS"); return Parser.MINUS;
             }
             // fall through
           case 63: break;
           case 11:
-            { return Parser.PERIOD;
+            { System.out.print("PERIOD"); return Parser.PERIOD;
             }
             // fall through
           case 64: break;
           case 12:
-            { return Parser.DIVISION;
+            { System.out.print("DIVISION"); return Parser.DIVISION;
             }
             // fall through
           case 65: break;
           case 13:
-            { return Parser.INTCONSTANT;
+            { System.out.print("INTCONSTANT"); return Parser.INTCONSTANT;
             }
             // fall through
           case 66: break;
           case 14:
-            { return Parser.SEMICOLON;
+            { System.out.print("SEMICOLON"); return Parser.SEMICOLON;
             }
             // fall through
           case 67: break;
           case 15:
-            { return Parser.LESS;
+            { System.out.print("LESS"); return Parser.LESS;
             }
             // fall through
           case 68: break;
           case 16:
-            { return Parser.ASSIGNOP;
+            { System.out.print("ASSIGNOP"); return Parser.ASSIGNOP;
             }
             // fall through
           case 69: break;
           case 17:
-            { return Parser.GREATER;
+            { System.out.print("GREATER"); return Parser.GREATER;
             }
             // fall through
           case 70: break;
           case 18:
-            { return Parser.ID;
+            { temp = yytext();
+                 identifiers.insert(temp);
+                 System.out.print("ID"); return Parser.ID;
             }
             // fall through
           case 71: break;
           case 19:
-            { return Parser.LEFTBRACKET;
+            { System.out.print("LEFTBRACKET"); return Parser.LEFTBRACKET;
             }
             // fall through
           case 72: break;
           case 20:
-            { return Parser.RIGHTBRACKET;
+            { System.out.print("RIGHTBRACKET"); return Parser.RIGHTBRACKET;
             }
             // fall through
           case 73: break;
           case 21:
-            { return Parser.LEFTBRACE;
+            { System.out.print("LEFTBRACE"); return Parser.LEFTBRACE;
             }
             // fall through
           case 74: break;
           case 22:
-            { return Parser.RIGHTBRACE;
+            { System.out.print("RIGHTBRACE"); return Parser.RIGHTBRACE;
             }
             // fall through
           case 75: break;
           case 23:
-            { return Parser.NOTEQUAL;
+            { System.out.print("NOTEQUAL"); return Parser.NOTEQUAL;
             }
             // fall through
           case 76: break;
           case 24:
-            { return Parser.STRINGCONSTANT;
+            { System.out.print("STRINGCONSTANT"); return Parser.STRINGCONSTANT;
             }
             // fall through
           case 77: break;
           case 25:
-            { return Parser.AND;
+            { System.out.print("AND"); return Parser.AND;
             }
             // fall through
           case 78: break;
           case 26:
-            { return Parser.DOUBLECONSTANT;
+            { System.out.print("DOUBLECONSTANT"); return Parser.DOUBLECONSTANT;
             }
             // fall through
           case 79: break;
           case 27:
-            { return Parser.LESSEQUAL;
+            { System.out.print("LESSEQUAL"); return Parser.LESSEQUAL;
             }
             // fall through
           case 80: break;
           case 28:
-            { return Parser.EQUAL;
+            { System.out.print("EQUAL"); return Parser.EQUAL;
             }
             // fall through
           case 81: break;
           case 29:
-            { return Parser.GREATEREQUAL;
+            { System.out.print("GREATEREQUAL"); return Parser.GREATEREQUAL;
             }
             // fall through
           case 82: break;
           case 30:
-            { return Parser.IF;
+            { System.out.print("IF"); return Parser.IF;
             }
             // fall through
           case 83: break;
           case 31:
-            { return Parser.OR;
+            { System.out.print("OR"); return Parser.OR;
             }
             // fall through
           case 84: break;
           case 32:
-            { return Parser.FOR;
+            { System.out.print("FOR"); return Parser.FOR;
             }
             // fall through
           case 85: break;
           case 33:
-            { return Parser.INT;
+            { System.out.print("INT"); return Parser.INT;
             }
             // fall through
           case 86: break;
           case 34:
-            { return Parser.NEW;
+            { System.out.print("NEW"); return Parser.NEW;
             }
             // fall through
           case 87: break;
           case 35:
-            { return Parser.ELSE;
+            { System.out.print("ELSE"); return Parser.ELSE;
             }
             // fall through
           case 88: break;
           case 36:
-            { return Parser.NULL;
+            { System.out.print("NULL"); return Parser.NULL;
             }
             // fall through
           case 89: break;
           case 37:
-            { return Parser.THIS;
+            { System.out.print("THIS"); return Parser.THIS;
             }
             // fall through
           case 90: break;
           case 38:
-            { return Parser.TRUE;
+            { System.out.print("TRUE"); return Parser.TRUE;
             }
             // fall through
           case 91: break;
           case 39:
-            { return Parser.VOID;
+            { System.out.print("VOID"); return Parser.VOID;
             }
             // fall through
           case 92: break;
           case 40:
-            { return Parser.BREAK;
+            { System.out.print("BREAK"); return Parser.BREAK;
             }
             // fall through
           case 93: break;
           case 41:
-            { return Parser.CLASS;
+            { System.out.print("CLASS"); return Parser.CLASS;
             }
             // fall through
           case 94: break;
           case 42:
-            { return Parser.FALSE;
+            { System.out.print("FALSE"); return Parser.FALSE;
             }
             // fall through
           case 95: break;
           case 43:
-            { return Parser.WHILE;
+            { System.out.print("WHILE"); return Parser.WHILE;
             }
             // fall through
           case 96: break;
           case 44:
-            { return Parser.DOUBLE;
+            { System.out.print("DOUBLE"); return Parser.DOUBLE;
             }
             // fall through
           case 97: break;
           case 45:
-            { return Parser.READLN;
+            { System.out.print("READLN"); return Parser.READLN;
             }
             // fall through
           case 98: break;
           case 46:
-            { return Parser.RETURN;
+            { System.out.print("RETURN"); return Parser.RETURN;
             }
             // fall through
           case 99: break;
           case 47:
-            { return Parser.STRING;
+            { System.out.print("STRING"); return Parser.STRING;
             }
             // fall through
           case 100: break;
           case 48:
-            { return Parser.BOOLEAN;
+            { System.out.print("BOOLEAN"); return Parser.BOOLEAN;
             }
             // fall through
           case 101: break;
           case 49:
-            { return Parser.EXTENDS;
+            { System.out.print("EXTENDS"); return Parser.EXTENDS;
             }
             // fall through
           case 102: break;
           case 50:
-            { return Parser.PRINTLN;
+            { System.out.print("PRINTLN"); return Parser.PRINTLN;
             }
             // fall through
           case 103: break;
           case 51:
-            { return Parser.NEWARRAY;
+            { System.out.print("NEWARRAY"); return Parser.NEWARRAY;
             }
             // fall through
           case 104: break;
           case 52:
-            { return Parser.INTERFACE;
+            { System.out.print("INTERFACE"); return Parser.INTERFACE;
             }
             // fall through
           case 105: break;
           case 53:
-            { return Parser.IMPLEMENTS;
+            { System.out.print("IMPLEMENTS"); return Parser.IMPLEMENTS;
             }
             // fall through
           case 106: break;

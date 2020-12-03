@@ -4,7 +4,7 @@
 %}
 
 %token BOOLEAN BREAK CLASS DOUBLE ELSE EXTENDS FALSE FOR IF IMPLEMENTS INT INTERFACE NEW
-%token NEWARRAY NULL PRINTLN READLN RETURN STRING THIS TRUE VOID WHILE INTEGER DOUBLE ID NEWLINE STRCON
+%token NEWARRAY NULL PRINTLN READLN RETURN STRING THIS TRUE VOID WHILE INTEGER DOUBLE ID NEWLINE
 %token LEFTPAREN RIGHTPAREN LEFTBRACKET RIGHTBRACKET LEFTBRACE RIGHTBRACE SEMICOLON COMMA
 %token INTCONSTANT DOUBLECONSTANT STRINGCONSTANT BOOLEANCONSTANT
 
@@ -47,10 +47,11 @@ VariableDecl_MULT:
 
 Variable:
 	Type ID	{System.out.println("");}
+	| Type ID ASSIGNOP Expr {System.out.println("");}
 	;
 
 Type:
-	INT	{System.out.println("");}
+	INT	{System.out.println($$);}
 	| DOUBLE	{System.out.println("");}
 	| BOOLEAN	{System.out.println("");}
 	| STRING	{System.out.println("");}
@@ -79,8 +80,18 @@ ID_PLUS:
 	ID_PLUS COMMA ID
 	;
 
+EXTEND:
+	EXTENDS	ID	{System.out.println("");}
+	|/* Epsilon */	{System.out.println("");}
+	;
+
+IMPLEMENT:
+	IMPLEMENTS ID_PLUS	{System.out.println("");}
+	|/* Epsilon */	{System.out.println("");}
+	;
+
 ClassDecl:
-	CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("");}
+	CLASS ID EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("");}
 	;
 
 Field:
@@ -108,16 +119,12 @@ Prototype_MULT:
 	;
 
 StmtBlock:
-	LEFTPAREN VariableDecl_MULT Stmt_MULT RIGHTPAREN	{System.out.println("");}
+	LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE	{System.out.println("");}
     	;
 
-Stmt_MULT:
-    	Stmt_MULT Stmt 	{System.out.println("");}
-        | /* Epsilon */	{System.out.println("");}
-        ;
-
 Stmt:
-    	IfStmt		{System.out.println("");}
+	Expr SEMICOLON	{System.out.println("");}
+    	| IfStmt	{System.out.println("");}
     	| WhileStmt    	{System.out.println("");}
     	| ForStmt      	{System.out.println("");}
     	| BreakStmt    	{System.out.println("");}
@@ -125,6 +132,11 @@ Stmt:
     	| PrintStmt    	{System.out.println("");}
     	| StmtBlock    	{System.out.println("");}
     	;
+
+Stmt_MULT:
+    	Stmt_MULT Stmt 	{System.out.println("");}
+        | /* Epsilon */	{System.out.println("");}
+        ;
 
 IfStmt:
 	IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt	{System.out.println("");}
@@ -183,7 +195,7 @@ Expr_PLUS:
         ;
 
 Lvalue:
-	ID {System.out.println("");}
+	ID 	{System.out.println("");}
 	| Lvalue LEFTBRACKET Expr RIGHTBRACKET	{System.out.println("");}
 	| Lvalue PERIOD ID	{System.out.println("");}
 	;
@@ -215,6 +227,7 @@ private int yylex () {
 	try {
 		yylval = new ParserVal(0);
 		yyl_return = lexer.yylex();
+		System.out.println("-" + yyl_return);
 	}
 	catch (IOException e) {
 		System.err.println("IO error :"+e);
@@ -224,21 +237,21 @@ return yyl_return;
 
 
 public void yyerror (String error) {
-	System.err.println ("Error: " + error);
+	//System.err.println ("Error: " + error);
+	System.err.println ("[Reject]");
 
 }
 
-
 public Parser(Reader r) {
-	yydebug=true;
+	//yydebug=true;
 	lexer = new Yylex(r, this);
 }
 
 public static void main(String args[]) throws IOException {
-	Parser yyparser;
+	Parser parser;
 	System.out.print("Enter File Name: ");
 	Scanner scanner = new Scanner(System.in);
 	FileReader fr = new FileReader(scanner.nextLine());
-	yyparser = new Parser(fr);
-yyparser.yyparse();
+	parser = new Parser(fr);
+	parser.yyparse();
 }
