@@ -20,7 +20,7 @@ number = {digit}+
 integer = (("0X" | "0x") + ({number} | [a-fA-F])+) | {number}
 decimal = {number} + "." + {number}*
 double = {decimal} (("E-"|"E+"|"e+"|"e-") + {number})?
-letter = [a-zA-Z_]
+letter = [a-zA-Z]
 identifier = {letter}({letter}|{digit})*
 newline = \n|\r|\r\n
 InputCharacter = [^\r\n]
@@ -83,11 +83,8 @@ strcon = ("\""|"\“") + ({letter}|{whitespace}|{digit}|{SpecialChar})* + ("\""|
 {Comment}       {/* ignore */}
 {integer}       {return Parser.INTCONSTANT;}
 {double}        {return Parser.DOUBLECONSTANT;}
-{identifier}    {output += "id ";
-                temp = yytext();
-                identifiers.insert(temp);
-                }
-{newline}       {return Parser.NL;}
+{identifier}    {return Parser.ID;}
+{newline}       {/* ignore */}
 {whitespace}    {/* ignore */}
 {strcon}        {return Parser.STRINGCONSTANT;}
 "("             {return Parser.LEFTPAREN;}
@@ -114,3 +111,4 @@ strcon = ("\""|"\“") + ({letter}|{whitespace}|{digit}|{SpecialChar})* + ("\""|
 "%"             {return Parser.MOD;}
 ","             {return Parser.COMMA;}
 "."             {return Parser.PERIOD;}
+[^]             {throw new Error("Illegal character <" + yytext()+">"); }

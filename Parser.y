@@ -4,12 +4,12 @@
 %}
 
 %token BOOLEAN BREAK CLASS DOUBLE ELSE EXTENDS FALSE FOR IF IMPLEMENTS INT INTERFACE NEW
-%token NEWARRAY NULL PRINTLN READLN RETURN STRING THIS TRUE VOID WHILE INTEGER DOUBLE ID ID_PLUS NL STRCON
+%token NEWARRAY NULL PRINTLN READLN RETURN STRING THIS TRUE VOID WHILE INTEGER DOUBLE ID NEWLINE STRCON
 %token LEFTPAREN RIGHTPAREN LEFTBRACKET RIGHTBRACKET LEFTBRACE RIGHTBRACE SEMICOLON COMMA
 %token INTCONSTANT DOUBLECONSTANT STRINGCONSTANT BOOLEANCONSTANT
 
 %left LEFTBRACKET RIGHTBRACKET PERIOD
-%left NOT NEG
+%left NOT
 %left MULTIPLICATION DIVISION MOD
 %left PLUS MINUS
 %left LESS LESSEQUAL GREATER GREATEREQUAL
@@ -19,163 +19,191 @@
 %left ASSIGNOP
       
 %%
+
 Program:
-	Decl	{System.out.println("[Reduce");}
+	Decl_PLUS	{System.out.println("");}
 	;
 
 Decl:
-	VariableDecl	{System.out.println("[Reduce ");}
-	| FunctionDecl	{System.out.println("[Reduce");}
-	| ClassDecl	{System.out.println("[Reduce");}
-	| InterfaceDecl	{System.out.println("[Reduce");}
+	VariableDecl	{System.out.println(" ");}
+	| FunctionDecl	{System.out.println("");}
+	| ClassDecl	{System.out.println("");}
+	| InterfaceDecl	{System.out.println("");}
+	;
+
+Decl_PLUS:
+	Decl	{System.out.println(" ");}
+	| Decl_PLUS COMMA Decl	{System.out.println("");}
 	;
 
 VariableDecl:
-	Variable	{System.out.println("[Reduce");}
+	Variable SEMICOLON	{System.out.println("");}
+	;
+
+VariableDecl_MULT:
+	VariableDecl_MULT VariableDecl	{System.out.println("");}
+	| /* Epsilon */	{System.out.println("");}
 	;
 
 Variable:
-	Type	{System.out.println("[Reduce");}
-	| ID	{System.out.println("[Reduce");}
+	Type ID	{System.out.println("");}
 	;
 
 Type:
-	INT	{System.out.println("[Reduce");}
-	| DOUBLE	{System.out.println("[Reduce");}
-	| STRING	{System.out.println("[Reduce");}
-	| Type LEFTBRACKET RIGHTBRACKET	{System.out.println("[Reduce");}
-	| ID	{System.out.println("[Reduce");}
+	INT	{System.out.println("");}
+	| DOUBLE	{System.out.println("");}
+	| BOOLEAN	{System.out.println("");}
+	| STRING	{System.out.println("");}
+	| Type LEFTBRACKET RIGHTBRACKET	{System.out.println("");}
+	| ID	{System.out.println("");}
 	;
 
 FunctionDecl:
-	Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock	{System.out.println("[Reduce");}
-	| VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock	{System.out.println("[Reduce");}
-	;
-
-Formals:
-	Variable_PLUS	{System.out.println("[Reduce");}
-	| /* Epsilon */	{System.out.println("[Reduce");}
+	Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock	{System.out.println("");}
+	| VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock	{System.out.println("");}
 	;
 
 Variable_PLUS:
-	Variable	{System.out.println("[Reduce");}
-	| Variable_PLUS COMMA Variable	{System.out.println("[Reduce");}
+	Variable	{System.out.println("");}
+	| Variable_PLUS COMMA Variable	{System.out.println("");}
 	;
 
+Formals:
+	Variable_PLUS	{System.out.println("");}
+	| /* Epsilon */	{System.out.println("");}
+	;
+
+ID_PLUS:
+	ID
+	|
+	ID_PLUS COMMA ID
+	;
 
 ClassDecl:
-	CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS COMMA LEFTBRACE Field_PLUS RIGHTBRACE	{System.out.println("[Reduce");}
-
-Field:
-	VariableDecl	{System.out.println("[Reduce");}
-	| FunctionDecl	{System.out.println("[Reduce");}
+	CLASS ID EXTENDS ID IMPLEMENTS ID_PLUS LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("");}
 	;
 
-Field_PLUS:
-        Field	{System.out.println("[Reduce");}
-        | Field_PLUS COMMA Field	{System.out.println("[Reduce");}
+Field:
+	VariableDecl	{System.out.println("");}
+	| FunctionDecl	{System.out.println("");}
+	;
+
+Field_MULT:
+        Field_MULT Field	{System.out.println("");}
+        | /* Epsilon */	{System.out.println("");}
         ;
 
 InterfaceDecl:
-	INTERFACE ID	{System.out.println("[Reduce");}
+	INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE	{System.out.println("");}
 	;
 
 Prototype:
-	Type ID LEFTPAREN Formals RIGHTPAREN	{System.out.println("[Reduce");}
-	| VOID ID LEFTPAREN Formals RIGHTPAREN	{System.out.println("[Reduce");}
+	Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");}
+	| VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");}
+	;
+
+Prototype_MULT:
+	Prototype_MULT Prototype	{System.out.println("");}
+	| /* Epsilon */	{System.out.println("");}
 	;
 
 StmtBlock:
-	VariableDecl	{System.out.println("[Reduce");}
-    	| Stmt		{System.out.println("[Reduce");}
+	LEFTPAREN VariableDecl_MULT Stmt_MULT RIGHTPAREN	{System.out.println("");}
+    	;
+
+Stmt_MULT:
+    	Stmt_MULT Stmt 	{System.out.println("");}
+        | /* Epsilon */	{System.out.println("");}
+        ;
 
 Stmt:
-    	IfStmt		{$$ = $1;}
-    	| WhileStmt    	{$$ = $1;}
-    	| ForStmt      	{$$ = $1;}
-    	| BreakStmt    	{$$ = $1;}
-    	| ReturnStmt   	{$$ = $1;}
-    	| PrintStmt    	{$$ = $1;}
-    	| StmtBlock    	{$$ = $1;}
+    	IfStmt		{System.out.println("");}
+    	| WhileStmt    	{System.out.println("");}
+    	| ForStmt      	{System.out.println("");}
+    	| BreakStmt    	{System.out.println("");}
+    	| ReturnStmt   	{System.out.println("");}
+    	| PrintStmt    	{System.out.println("");}
+    	| StmtBlock    	{System.out.println("");}
     	;
 
 IfStmt:
-	IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt	{System.out.println("[Reduce");}
+	IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt	{System.out.println("");}
 	;
 
 WhileStmt:
-	WHILE LEFTPAREN Expr RIGHTPAREN Stmt	{System.out.println("[Reduce");}
+	WHILE LEFTPAREN Expr RIGHTPAREN Stmt	{System.out.println("");}
 	;
 
 ForStmt:
-	FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt	{System.out.println("[Reduce");}
+	FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt	{System.out.println("");}
 	;
 
 BreakStmt:
-	BREAK	{System.out.println("[Reduce");}
+	BREAK SEMICOLON	{System.out.println("");}
 	;
 
 ReturnStmt:
-	RETURN Expr	{System.out.println("[Reduce");}
+	RETURN Expr SEMICOLON	{System.out.println("");}
 	;
 
 PrintStmt:
-	PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN	{System.out.println("[Reduce");}
+	PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON	{System.out.println("");}
 	;
 
 Expr:
-	Lvalue '=' Expr 		{System.out.println("[Reduce");}
-	| Constant			{System.out.println("[Reduce");}
-	| Lvalue			{System.out.println("[Reduce");}
-	| THIS				{System.out.println("[Reduce");}
-	| Call				{System.out.println("[Reduce");}
-	| LEFTPAREN Expr RIGHTPAREN	{System.out.println("[Reduce");}
-       	| Expr '+' Expr        		{System.out.println("[Reduce");}
-       	| Expr '-' Expr        		{System.out.println("[Reduce");}
-       	| Expr '*' Expr        		{System.out.println("[Reduce");}
-       	| Expr '/' Expr        		{System.out.println("[Reduce");}
-       	| Expr '%' Expr			{System.out.println("[Reduce");}
-       	| '-' Expr  %prec NEG 		{System.out.println("[Reduce");}
-       	| Expr '<' Expr			{System.out.println("[Reduce");}
-       	| Expr '<=' Expr		{System.out.println("[Reduce");}
-       	| Expr '>' Expr			{System.out.println("[Reduce");}
-       	| Expr '>=' Expr		{System.out.println("[Reduce");}
-       	| Expr '==' Expr		{System.out.println("[Reduce");}
-       	| Expr '!=' Expr		{System.out.println("[Reduce");}
-       	| Expr '&&' Expr		{System.out.println("[Reduce");}
-       	| Expr '||' Expr		{System.out.println("[Reduce");}
-       	| '!' Expr			{System.out.println("[Reduce");}
-       	| READLN LEFTPAREN RIGHTPAREN			{System.out.println("[Reduce");}
-       	| NEW LEFTPAREN ID RIGHTPAREN			{System.out.println("[Reduce");}
-       	| NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN	{System.out.println("[Reduce");}
+	Lvalue ASSIGNOP Expr 		{System.out.println("");}
+	| Constant			{System.out.println("");}
+	| Lvalue			{System.out.println("");}
+	| THIS				{System.out.println("");}
+	| Call				{System.out.println("");}
+	| LEFTPAREN Expr RIGHTPAREN	{System.out.println("");}
+       	| Expr PLUS Expr        		{System.out.println("");}
+       	| Expr MINUS Expr        		{System.out.println("");}
+       	| Expr MULTIPLICATION Expr        		{System.out.println("");}
+       	| Expr DIVISION Expr        		{System.out.println("");}
+       	| Expr MOD Expr			{System.out.println("");}
+       	| MINUS Expr		{System.out.println("");}
+       	| Expr LESS Expr			{System.out.println("");}
+       	| Expr LESSEQUAL Expr		{System.out.println("");}
+       	| Expr GREATER Expr			{System.out.println("");}
+       	| Expr GREATEREQUAL Expr		{System.out.println("");}
+       	| Expr EQUAL Expr		{System.out.println("");}
+       	| Expr NOTEQUAL Expr		{System.out.println("");}
+       	| Expr AND Expr		{System.out.println("");}
+       	| Expr OR Expr		{System.out.println("");}
+       	| NOT Expr			{System.out.println("");}
+       	| READLN LEFTPAREN RIGHTPAREN			{System.out.println("");}
+       	| NEW LEFTPAREN ID RIGHTPAREN			{System.out.println("");}
+       	| NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN	{System.out.println("");}
        	;
 
 Expr_PLUS:
-	Expr	{System.out.println("[Reduce");}
-        | Expr_PLUS COMMA Expr	{System.out.println("[Reduce");}
+	Expr	{System.out.println("");}
+        | Expr_PLUS COMMA Expr	{System.out.println("");}
         ;
 
 Lvalue:
-	ID	{System.out.println("[Reduce");}
-	| Lvalue LEFTBRACKET Expr RIGHTBRACKET	{System.out.println("[Reduce");}
-	| Lvalue PERIOD ID	{System.out.println("[Reduce");}
+	ID {System.out.println("");}
+	| Lvalue LEFTBRACKET Expr RIGHTBRACKET	{System.out.println("");}
+	| Lvalue PERIOD ID	{System.out.println("");}
 	;
 
 Call:
-	ID LEFTPAREN Actuals RIGHTPAREN	{System.out.println("[Reduce");}
-	| ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN	{System.out.println("[Reduce");}
+	ID LEFTPAREN Actuals RIGHTPAREN	{System.out.println("");}
+	| ID PERIOD ID LEFTPAREN Actuals RIGHTPAREN	{System.out.println("");}
 	;
 
 Actuals:
-	Expr_PLUS COMMA	{System.out.println("[Reduce");}
-	| /* Epsilon */	{System.out.println("[Reduce");}
+	Expr_PLUS COMMA	{System.out.println("");}
+	| /* Epsilon */	{System.out.println("");}
+	;
 
 Constant:
-	INTCONSTANT	{System.out.println("[Reduce");}
-	| DOUBLECONSTANT	{System.out.println("[Reduce");}
-	| STRINGCONSTANT	{System.out.println("[Reduce");}
-	| BOOLEANCONSTANT	{System.out.println("[Reduce");}
-	| NULL	{System.out.println("[Reduce");}
+	INTCONSTANT	{System.out.println("");}
+	| DOUBLECONSTANT	{System.out.println("");}
+	| STRINGCONSTANT	{System.out.println("");}
+	| BOOLEANCONSTANT	{System.out.println("");}
+	| NULL	{System.out.println("");}
 	;
 
 %%
