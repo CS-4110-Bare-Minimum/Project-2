@@ -1,15 +1,15 @@
 /* demonstrates:
 1) extends
 2) implements
-3) while
-4) break
-5) mod
+3) mod
+4) or
+5) break
 */
 class first extends second implements third
 {
    void linebreak(int temp)
    {
-      while(temp % 2 == 0)
+      while(temp % 2 == 0 || temp > 0)
       {
          println("\n-");
          break;
