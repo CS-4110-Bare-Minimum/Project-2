@@ -75,9 +75,9 @@ Formals:
 	;
 
 ID_PLUS:
-	ID
+	ID	{System.out.println("");}
 	|
-	ID_PLUS COMMA ID
+	ID_PLUS COMMA ID	{System.out.println("");}
 	;
 
 EXTEND_ZOO:
