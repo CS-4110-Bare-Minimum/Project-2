@@ -696,6 +696,7 @@ class Yylex {
     if (!zzEOFDone) {
       zzEOFDone = true;
     
+    /*
       System.out.print("What should output file be called? ");
       Scanner kb = new Scanner(System.in);
       String file = kb.nextLine();
@@ -710,6 +711,7 @@ class Yylex {
       }
 
       identifiers.print();
+     */
   yyclose();    }
   }
 
