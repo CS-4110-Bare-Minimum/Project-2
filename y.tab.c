@@ -65,45 +65,45 @@ short yylhs[] = {                                        -1,
     0,    2,    2,    2,    2,    1,    1,    3,    8,    8,
     7,    7,    9,    9,    9,    9,    9,    9,    4,    4,
    13,   13,   11,   11,   14,   14,   15,   15,   16,   16,
-    5,   18,   18,   17,   17,    6,   20,   20,   19,   19,
-   12,   22,   22,   22,   22,   22,   22,   22,   22,   21,
-   21,   30,   30,   24,   25,   26,   27,   28,   29,   10,
+    5,   17,   17,   18,   18,    6,   19,   19,   20,   20,
+   12,   21,   21,   22,   22,   22,   22,   22,   22,   22,
+   22,   30,   30,   24,   25,   26,   27,   28,   29,   23,
+   23,   31,   31,   10,   10,   10,   10,   10,   10,   10,
    10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-   10,   10,   10,   10,   10,   10,   10,   10,   10,   10,
-   10,   10,   10,   23,   23,   31,   31,   32,   32,   32,
+   10,   10,   10,   10,   10,   10,   10,   32,   32,   32,
    34,   34,   35,   35,   33,   33,   33,   33,   33,
 };
 short yylen[] = {                                         2,
     1,    1,    1,    1,    1,    1,    2,    2,    2,    0,
     2,    4,    1,    1,    1,    1,    3,    1,    6,    6,
     1,    3,    1,    0,    1,    3,    0,    2,    0,    2,
-    7,    1,    1,    2,    0,    5,    6,    6,    2,    0,
-    4,    2,    1,    1,    1,    1,    1,    1,    1,    2,
-    0,    0,    2,    6,    5,    9,    2,    3,    5,    3,
-    1,    1,    1,    1,    3,    3,    3,    3,    3,    3,
-    2,    3,    3,    3,    3,    3,    3,    3,    3,    2,
-    3,    4,    6,    0,    1,    1,    3,    1,    4,    3,
+    7,    2,    0,    1,    1,    5,    2,    0,    6,    6,
+    4,    2,    0,    2,    1,    1,    1,    1,    1,    1,
+    1,    0,    2,    6,    5,    9,    2,    3,    5,    0,
+    1,    1,    3,    3,    1,    1,    1,    1,    3,    3,
+    3,    3,    3,    3,    2,    3,    3,    3,    3,    3,
+    3,    3,    3,    2,    3,    4,    6,    1,    4,    3,
     4,    6,    1,    0,    1,    1,    1,    1,    1,
 };
 short yydefred[] = {                                      0,
    15,    0,   14,   13,    0,   16,    0,   18,    0,    0,
     6,    2,    3,    4,    5,    0,    0,    0,    0,    0,
-    7,    8,    0,    0,    0,    0,   40,    0,    0,    0,
+    7,    8,    0,    0,    0,    0,   38,    0,    0,    0,
    17,   28,    0,    0,    0,   21,    0,    0,    0,    0,
-    0,    0,   99,    0,   63,    0,    0,   95,   96,   97,
-   98,    0,    0,    0,    0,   61,   64,   25,    0,   35,
-    0,   36,    0,   39,    0,    0,    0,    0,    0,    0,
+    0,    0,   99,    0,   67,    0,    0,   95,   96,   97,
+   98,    0,    0,    0,    0,   65,   68,   25,    0,   33,
+    0,   36,    0,   37,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,   10,   20,   22,   19,
-    0,    0,   81,    0,    0,    0,    0,   65,    0,    0,
+    0,    0,   85,    0,    0,    0,    0,   69,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-   79,    0,   90,   60,   26,   31,   32,   33,   34,    0,
-    0,    0,   82,    0,    0,   91,    0,   89,    0,    0,
+   83,    0,   90,   64,   26,   31,   34,   35,   32,    0,
+    0,    0,   86,    0,    0,   91,    0,   89,    0,    0,
     9,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,   41,    0,   49,   50,    0,   43,   44,
-   45,   46,   47,   48,   83,   92,   38,   37,   57,    0,
-    0,    0,    0,    0,   42,    0,    0,    0,   58,    0,
+    0,    0,    0,   41,    0,   51,   42,    0,   45,   46,
+   47,   48,   49,   50,   87,   92,   40,   39,   57,    0,
+    0,    0,    0,    0,   44,    0,    0,    0,   58,    0,
     0,    0,    0,    0,    0,    0,   59,   55,    0,    0,
    54,    0,   53,    0,   56,
 };
@@ -166,14 +166,14 @@ short yygindex[] = {                                      0,
 #define YYTABLESIZE 754
 short yytable[] = {                                      54,
    17,   40,  127,   29,   90,   36,   36,   27,  173,    1,
-   17,   72,    3,   23,   91,   85,   74,   24,  183,    4,
-   85,   75,   76,   73,  135,   18,  176,    6,   27,   92,
-   30,   19,   80,    8,   80,   63,   20,   80,   80,   65,
+   17,   72,    3,   23,   91,   61,   74,   24,  183,    4,
+   61,   75,   76,   73,  135,   18,  176,    6,   27,   92,
+   30,   19,   84,    8,   84,   63,   20,   84,   84,   65,
   141,  104,   22,   24,   99,  192,  109,  110,  111,  112,
   113,  114,  115,  116,  117,  118,  119,  120,  121,  122,
-   12,  124,   52,   96,   86,   12,   12,   24,   52,   52,
-   86,   88,   89,   52,   52,   52,   52,   52,   52,   98,
-   52,  100,   87,   52,   11,   52,   25,   52,   87,   11,
+   12,  124,   52,   96,   62,   12,   12,   24,   52,   52,
+   62,   88,   89,   52,   52,   52,   52,   52,   52,   98,
+   52,  100,   63,   52,   11,   52,   25,   52,   63,   11,
    11,   52,   52,   52,   17,   52,   52,   52,   52,   27,
    52,   28,  139,  140,  144,   52,  104,   36,   36,  165,
    24,  186,   31,  188,    1,    1,   32,    3,    3,  193,
@@ -183,63 +183,63 @@ short yytable[] = {                                      54,
   185,   71,   93,   41,   42,   43,  151,   44,  152,   95,
    45,   30,   97,  153,  101,   46,  103,   47,  102,  107,
   123,   97,  154,  125,  130,   48,   49,   50,   51,  131,
-   52,   51,  133,  134,  135,   53,  136,   51,   51,  137,
-   89,  146,   51,   51,   51,   51,   51,   51,  147,   51,
-  166,  167,   51,  170,  168,  171,   51,  169,  172,  174,
-   51,   51,   51,  175,   51,   51,   51,   51,  190,   51,
-  148,  179,  181,  187,   51,  194,  149,  150,    1,   11,
+   52,   43,  133,  134,  135,   53,  136,   43,   43,  137,
+   89,  146,   43,   43,   43,   43,   43,   43,  147,   43,
+  166,  167,   43,  170,  168,  171,   43,  169,  172,  174,
+   43,   43,   43,  175,   43,   43,   43,   43,  190,   43,
+  148,  179,  181,  187,   43,  194,  149,  150,    1,   11,
    29,   41,   42,   43,  151,   44,  152,   24,   45,   23,
-   94,  153,   93,   46,   84,   47,   30,   21,  128,   97,
-   84,  178,  145,   48,   49,   50,   51,    0,   52,    0,
+   94,  153,   93,   46,   60,   47,   30,   21,  128,   97,
+   60,  178,  145,   48,   49,   50,   51,    0,   52,    0,
    41,   42,   43,   53,   44,    0,    0,   45,    0,    0,
     0,    0,   46,    0,   47,    0,    0,    0,    0,    0,
     0,    0,   48,   49,   50,   51,    0,   52,   88,   88,
    88,    0,   53,   88,   88,    0,    0,    0,    0,    0,
     0,   88,   88,   88,   88,   88,   88,   88,   88,   88,
-   88,   88,   88,   88,   88,   62,    0,   62,    0,    0,
-   62,   62,    0,    0,    0,    0,    0,    0,   62,   62,
-   62,   62,   62,   62,   62,   62,   62,   62,   62,   62,
-   62,  108,   80,   81,   82,   83,   84,   85,   86,   87,
+   88,   88,   88,   88,   88,   66,    0,   66,    0,    0,
+   66,   66,    0,    0,    0,    0,    0,    0,   66,   66,
+   66,   66,   66,   66,   66,   66,   66,   66,   66,   66,
+   66,  108,   80,   81,   82,   83,   84,   85,   86,   87,
    88,   89,    0,    0,   77,   78,   79,   80,   81,   82,
    83,   84,   85,   86,   87,   88,   89,  182,   82,   83,
    84,   85,   86,   87,   88,   89,    0,    0,    0,    0,
    77,   78,   79,   80,   81,   82,   83,   84,   85,   86,
    87,   88,   89,  184,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,   77,   78,   79,   80,
-   81,   82,   83,   84,   85,   86,   87,   88,   89,   78,
-    0,   78,    0,    0,   78,   78,    0,    0,    0,    0,
-    0,    0,   78,   78,   78,   78,   78,   78,   78,   78,
-   78,   78,   78,   78,    1,    0,    2,    3,    0,    0,
-    0,    0,    0,    0,    4,    5,    0,    0,   76,    0,
-   76,    0,    6,   76,   76,    7,    0,    0,    8,    0,
-    0,   76,   76,   76,   76,   76,   76,   76,   76,   76,
-   76,   76,   77,    0,   77,    0,    0,   77,   77,    0,
-    0,    0,    0,    0,    0,   77,   77,   77,   77,   77,
-   77,   77,   77,   77,   77,   77,  138,    0,    0,    0,
+   81,   82,   83,   84,   85,   86,   87,   88,   89,   82,
+    0,   82,    0,    0,   82,   82,    0,    0,    0,    0,
+    0,    0,   82,   82,   82,   82,   82,   82,   82,   82,
+   82,   82,   82,   82,    1,    0,    2,    3,    0,    0,
+    0,    0,    0,    0,    4,    5,    0,    0,   80,    0,
+   80,    0,    6,   80,   80,    7,    0,    0,    8,    0,
+    0,   80,   80,   80,   80,   80,   80,   80,   80,   80,
+   80,   80,   81,    0,   81,    0,    0,   81,   81,    0,
+    0,    0,    0,    0,    0,   81,   81,   81,   81,   81,
+   81,   81,   81,   81,   81,   81,  138,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,   77,   78,   79,
    80,   81,   82,   83,   84,   85,   86,   87,   88,   89,
-   72,    0,   72,    0,    0,   72,   72,    0,    0,    0,
-    0,    0,    0,   72,   72,   72,   72,   72,   72,   72,
-   72,   72,   73,    0,   73,    0,    0,   73,   73,    0,
-    0,    0,    0,    0,    0,   73,   73,   73,   73,   73,
-   73,   73,   73,   73,   74,    0,   74,    0,    0,   74,
-   74,    0,    0,    0,    0,    0,    0,   74,   74,   74,
-   74,   74,   74,   74,   74,   74,   75,    0,   75,    0,
-    0,   75,   75,    0,    0,    0,    0,    0,    0,   75,
-   75,   75,   75,   75,   75,   75,   75,   75,  189,    0,
+   76,    0,   76,    0,    0,   76,   76,    0,    0,    0,
+    0,    0,    0,   76,   76,   76,   76,   76,   76,   76,
+   76,   76,   77,    0,   77,    0,    0,   77,   77,    0,
+    0,    0,    0,    0,    0,   77,   77,   77,   77,   77,
+   77,   77,   77,   77,   78,    0,   78,    0,    0,   78,
+   78,    0,    0,    0,    0,    0,    0,   78,   78,   78,
+   78,   78,   78,   78,   78,   78,   79,    0,   79,    0,
+    0,   79,   79,    0,    0,    0,    0,    0,    0,   79,
+   79,   79,   79,   79,   79,   79,   79,   79,  189,    0,
     0,    0,    0,    0,    0,    0,   77,   78,   79,   80,
-   81,   82,   83,   84,   85,   86,   87,   88,   89,   71,
-    0,   71,    0,    0,   71,   71,    0,    0,    0,    0,
-    0,    0,   71,   71,   71,   71,   71,   66,    0,   66,
-    0,    0,   66,   66,    0,    0,    0,    0,    0,    0,
-   66,   66,   66,   66,   66,   67,    0,   67,    0,    0,
-   67,   67,    0,    0,    0,    0,    0,    0,   67,   67,
-   67,   67,   67,   68,    0,   68,    0,    0,   68,   68,
-    0,    0,    0,    0,    0,    0,   68,   68,   68,   69,
-    0,   69,    0,    0,   69,   69,    0,    0,    0,    0,
-    0,    0,   69,   69,   69,   70,    0,   70,    0,    0,
-   70,   70,    0,    0,    0,    0,    0,    0,   70,   70,
-   70,   77,   78,   79,   80,   81,   82,   83,   84,   85,
+   81,   82,   83,   84,   85,   86,   87,   88,   89,   75,
+    0,   75,    0,    0,   75,   75,    0,    0,    0,    0,
+    0,    0,   75,   75,   75,   75,   75,   70,    0,   70,
+    0,    0,   70,   70,    0,    0,    0,    0,    0,    0,
+   70,   70,   70,   70,   70,   71,    0,   71,    0,    0,
+   71,   71,    0,    0,    0,    0,    0,    0,   71,   71,
+   71,   71,   71,   72,    0,   72,    0,    0,   72,   72,
+    0,    0,    0,    0,    0,    0,   72,   72,   72,   73,
+    0,   73,    0,    0,   73,   73,    0,    0,    0,    0,
+    0,    0,   73,   73,   73,   74,    0,   74,    0,    0,
+   74,   74,    0,    0,    0,    0,    0,    0,   74,   74,
+   74,   77,   78,   79,   80,   81,   82,   83,   84,   85,
    86,   87,   88,   89,
 };
 short yycheck[] = {                                      30,
@@ -375,16 +375,18 @@ char *yyrule[] = {
 "IMPLEMENT_ZOO :",
 "IMPLEMENT_ZOO : IMPLEMENTS ID_PLUS",
 "ClassDecl : CLASS ID EXTEND_ZOO IMPLEMENT_ZOO LEFTBRACE Field_MULT RIGHTBRACE",
-"Field : VariableDecl",
-"Field : FunctionDecl",
 "Field_MULT : Field_MULT Field",
 "Field_MULT :",
+"Field : VariableDecl",
+"Field : FunctionDecl",
 "InterfaceDecl : INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE",
-"Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON",
-"Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON",
 "Prototype_MULT : Prototype_MULT Prototype",
 "Prototype_MULT :",
+"Prototype : Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON",
+"Prototype : VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON",
 "StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE",
+"Stmt_MULT : Stmt_MULT Stmt",
+"Stmt_MULT :",
 "Stmt : Expr_ZOO SEMICOLON",
 "Stmt : IfStmt",
 "Stmt : WhileStmt",
@@ -393,8 +395,6 @@ char *yyrule[] = {
 "Stmt : ReturnStmt",
 "Stmt : PrintStmt",
 "Stmt : StmtBlock",
-"Stmt_MULT : Stmt_MULT Stmt",
-"Stmt_MULT :",
 "Else_ZOO :",
 "Else_ZOO : ELSE Stmt",
 "IfStmt : IF LEFTPAREN Expr RIGHTPAREN Stmt Else_ZOO",
@@ -403,6 +403,10 @@ char *yyrule[] = {
 "BreakStmt : BREAK SEMICOLON",
 "ReturnStmt : RETURN Expr_ZOO SEMICOLON",
 "PrintStmt : PRINTLN LEFTPAREN Expr_PLUS RIGHTPAREN SEMICOLON",
+"Expr_ZOO :",
+"Expr_ZOO : Expr",
+"Expr_PLUS : Expr",
+"Expr_PLUS : Expr_PLUS COMMA Expr",
 "Expr : Lvalue ASSIGNOP Expr",
 "Expr : Constant",
 "Expr : Lvalue",
@@ -427,10 +431,6 @@ char *yyrule[] = {
 "Expr : READLN LEFTPAREN RIGHTPAREN",
 "Expr : NEW LEFTPAREN ID RIGHTPAREN",
 "Expr : NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN",
-"Expr_ZOO :",
-"Expr_ZOO : Expr",
-"Expr_PLUS : Expr",
-"Expr_PLUS : Expr_PLUS COMMA Expr",
 "Lvalue : ID",
 "Lvalue : Lvalue LEFTBRACKET Expr RIGHTBRACKET",
 "Lvalue : Lvalue PERIOD ID",
@@ -493,7 +493,7 @@ return yyl_return;
 
 public void yyerror (String error) {
 	System.err.println ("Error: " + error);
-	System.err.println ("[Reject]");
+	//System.err.println ("[Reject]");
 
 }
 
@@ -656,7 +656,7 @@ case 1:
 break;
 case 2:
 #line 28 "Parser.y"
-{System.out.println(" ");}
+{System.out.println("");}
 break;
 case 3:
 #line 29 "Parser.y"
@@ -746,6 +746,14 @@ case 24:
 #line 74 "Parser.y"
 {System.out.println("");}
 break;
+case 25:
+#line 78 "Parser.y"
+{System.out.println("");}
+break;
+case 26:
+#line 80 "Parser.y"
+{System.out.println("");}
+break;
 case 27:
 #line 84 "Parser.y"
 {System.out.println("");}
@@ -796,7 +804,7 @@ case 38:
 break;
 case 39:
 #line 119 "Parser.y"
-{System.out.println("");}
+{System.out.println("");;}
 break;
 case 40:
 #line 120 "Parser.y"
@@ -815,27 +823,27 @@ case 43:
 {System.out.println("");}
 break;
 case 44:
-#line 130 "Parser.y"
-{System.out.println("");}
-break;
-case 45:
-#line 131 "Parser.y"
-{System.out.println("");}
-break;
-case 46:
-#line 132 "Parser.y"
-{System.out.println("");}
-break;
-case 47:
 #line 133 "Parser.y"
 {System.out.println("");}
 break;
-case 48:
+case 45:
 #line 134 "Parser.y"
 {System.out.println("");}
 break;
-case 49:
+case 46:
 #line 135 "Parser.y"
+{System.out.println("");}
+break;
+case 47:
+#line 136 "Parser.y"
+{System.out.println("");}
+break;
+case 48:
+#line 137 "Parser.y"
+{System.out.println("");}
+break;
+case 49:
+#line 138 "Parser.y"
 {System.out.println("");}
 break;
 case 50:
@@ -887,99 +895,99 @@ case 61:
 {System.out.println("");}
 break;
 case 62:
-#line 176 "Parser.y"
-{System.out.println("");}
-break;
-case 63:
-#line 177 "Parser.y"
-{System.out.println("");}
-break;
-case 64:
-#line 178 "Parser.y"
-{System.out.println("");}
-break;
-case 65:
 #line 179 "Parser.y"
 {System.out.println("");}
 break;
-case 66:
+case 63:
 #line 180 "Parser.y"
 {System.out.println("");}
 break;
-case 67:
-#line 181 "Parser.y"
-{System.out.println("");}
-break;
-case 68:
-#line 182 "Parser.y"
-{System.out.println("");}
-break;
-case 69:
-#line 183 "Parser.y"
-{System.out.println("");}
-break;
-case 70:
+case 64:
 #line 184 "Parser.y"
 {System.out.println("");}
 break;
-case 71:
+case 65:
 #line 185 "Parser.y"
 {System.out.println("");}
 break;
-case 72:
+case 66:
 #line 186 "Parser.y"
 {System.out.println("");}
 break;
-case 73:
+case 67:
 #line 187 "Parser.y"
 {System.out.println("");}
 break;
-case 74:
+case 68:
 #line 188 "Parser.y"
 {System.out.println("");}
 break;
-case 75:
+case 69:
 #line 189 "Parser.y"
 {System.out.println("");}
 break;
-case 76:
+case 70:
 #line 190 "Parser.y"
 {System.out.println("");}
 break;
-case 77:
+case 71:
 #line 191 "Parser.y"
 {System.out.println("");}
 break;
-case 78:
+case 72:
 #line 192 "Parser.y"
 {System.out.println("");}
 break;
-case 79:
+case 73:
 #line 193 "Parser.y"
 {System.out.println("");}
 break;
-case 80:
+case 74:
 #line 194 "Parser.y"
 {System.out.println("");}
 break;
-case 81:
+case 75:
 #line 195 "Parser.y"
 {System.out.println("");}
 break;
-case 82:
+case 76:
 #line 196 "Parser.y"
 {System.out.println("");}
 break;
-case 83:
+case 77:
 #line 197 "Parser.y"
 {System.out.println("");}
 break;
-case 84:
+case 78:
+#line 198 "Parser.y"
+{System.out.println("");}
+break;
+case 79:
+#line 199 "Parser.y"
+{System.out.println("");}
+break;
+case 80:
+#line 200 "Parser.y"
+{System.out.println("");}
+break;
+case 81:
 #line 201 "Parser.y"
 {System.out.println("");}
 break;
-case 85:
+case 82:
 #line 202 "Parser.y"
+{System.out.println("");}
+break;
+case 83:
+#line 203 "Parser.y"
+{System.out.println("");}
+break;
+case 84:
+#line 204 "Parser.y"
+{System.out.println("");}
+break;
+case 85:
+#line 205 "Parser.y"
 {System.out.println("");}
 break;
 case 86:
@@ -1038,7 +1046,7 @@ case 99:
 #line 231 "Parser.y"
 {System.out.println("");}
 break;
-#line 1042 "y.tab.c"
+#line 1050 "y.tab.c"
     }
     yyssp -= yym;
     yystate = *yyssp;

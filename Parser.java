@@ -923,7 +923,7 @@ case 30:
 break;
 case 31:
 //#line 96 "Parser.y"
-{System.out.println("+  + " " + ");}
+{System.out.println("");}
 break;
 case 32:
 //#line 100 "Parser.y"
