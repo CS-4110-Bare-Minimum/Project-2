@@ -1,4 +1,12 @@
-int i = 0;
-if(i < 5) {
-	i = 5;
-} 
+class first extends second implements third
+{
+   void linebreak(int temp)
+   {
+      while(temp % 2 == 0 
+            || temp > 0)
+      {
+         println("a");
+         break;
+      }
+   }
+}

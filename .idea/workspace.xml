@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3601b64a-0f18-4b0f-8671-ba7f36672cbe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/y.tab.c" beforeDir="false" afterPath="$PROJECT_DIR$/y.tab.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
