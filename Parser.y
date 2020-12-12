@@ -33,7 +33,7 @@ Decl:
 
 Decl_PLUS:
 	Decl	{System.out.println(" ");}
-	| Decl_PLUS COMMA Decl	{System.out.println("");}
+	| Decl_PLUS Decl	{System.out.println("");}
 	;
 
 VariableDecl:
@@ -120,10 +120,11 @@ Prototype_MULT:
 
 StmtBlock:
 	LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE	{System.out.println("");}
+		| LEFTBRACE VariableDecl_MULT Stmt_MULT VariableDecl_MULT RIGHTBRACE	{System.out.println("");}
     	;
 
 Stmt:
-	Expr SEMICOLON	{System.out.println("");}
+	Expr_ZOO SEMICOLON	{System.out.println("");}
     	| IfStmt	{System.out.println("");}
     	| WhileStmt    	{System.out.println("");}
     	| ForStmt      	{System.out.println("");}
@@ -147,19 +148,24 @@ WhileStmt:
 	;
 
 ForStmt:
-	FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt	{System.out.println("");}
+	FOR LEFTPAREN Expr_ZOO SEMICOLON Expr SEMICOLON Expr_ZOO RIGHTPAREN Stmt	{System.out.println("");}
 	;
 
 BreakStmt:
 	BREAK SEMICOLON	{System.out.println("");}
 	;
 
+Expr_ZOO:
+	/* Epsilon*/	{System.out.println("");}
+		| Expr		{System.out.println("");}
+		;
+
 ReturnStmt:
-	RETURN Expr SEMICOLON	{System.out.println("");}
+	RETURN Expr_ZOO SEMICOLON	{System.out.println("");}
 	;
 
 PrintStmt:
-	PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON	{System.out.println("");}
+	PRINTLN LEFTPAREN Expr_PLUS RIGHTPAREN SEMICOLON	{System.out.println("");}
 	;
 
 Expr:
@@ -206,7 +212,7 @@ Call:
 	;
 
 Actuals:
-	Expr_PLUS COMMA	{System.out.println("");}
+	Expr_PLUS	{System.out.println("");}
 	| /* Epsilon */	{System.out.println("");}
 	;
 

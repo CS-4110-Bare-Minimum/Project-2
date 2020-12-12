@@ -1,2 +1,3 @@
-// in function
+void f(){
 front = in.nextLine();
+}
