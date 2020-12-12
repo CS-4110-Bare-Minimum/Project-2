@@ -11,7 +11,7 @@ class first extends second implements third
    {
       while(temp % 2 == 0 || temp > 0)
       {
-         println("\n-");
+         println("a");
          break;
       }
    }

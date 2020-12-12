@@ -39,6 +39,7 @@ strcon = ("\""|"\“") + ({letter}|{whitespace}|{digit}|{SpecialChar})* + ("\""|
    Trie identifiers = new Trie();
 %}
 %eof{
+    /*
       System.out.print("What should output file be called? ");
       Scanner kb = new Scanner(System.in);
       String file = kb.nextLine();
@@ -53,6 +54,7 @@ strcon = ("\""|"\“") + ({letter}|{whitespace}|{digit}|{SpecialChar})* + ("\""|
       }
 
       identifiers.print();
+     */
 %eof}
 %%
 //rules

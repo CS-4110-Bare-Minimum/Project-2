@@ -25,7 +25,7 @@ Program:
 	;
 
 Decl:
-	VariableDecl	{System.out.println(" ");}
+	VariableDecl	{System.out.println("");}
 	| FunctionDecl	{System.out.println("");}
 	| ClassDecl	{System.out.println("");}
 	| InterfaceDecl	{System.out.println("");}
@@ -33,7 +33,7 @@ Decl:
 
 Decl_PLUS:
 	Decl	{System.out.println(" ");}
-	| Decl_PLUS COMMA Decl	{System.out.println("");}
+	| Decl_PLUS Decl	{System.out.println("");}
 	;
 
 VariableDecl:
@@ -80,23 +80,20 @@ ID_PLUS:
 	ID_PLUS COMMA ID
 	;
 
-EXTEND:
-	EXTENDS	ID	{System.out.println("");}
-	|/* Epsilon */	{System.out.println("");}
+EXTEND_ZOO:
+	/* Epsilon */	{System.out.println("");}
+	|
+	EXTENDS ID	{System.out.println("");}
 	;
 
-IMPLEMENT:
+IMPLEMENT_ZOO:
+	/* Epsilon */	{System.out.println("");}
+	|
 	IMPLEMENTS ID_PLUS	{System.out.println("");}
-	|/* Epsilon */	{System.out.println("");}
 	;
 
 ClassDecl:
-	CLASS ID EXTEND IMPLEMENT LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("");}
-	;
-
-Field:
-	VariableDecl	{System.out.println("");}
-	| FunctionDecl	{System.out.println("");}
+	CLASS ID EXTEND_ZOO IMPLEMENT_ZOO LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("+  + " " + ");}
 	;
 
 Field_MULT:
@@ -104,13 +101,13 @@ Field_MULT:
         | /* Epsilon */	{System.out.println("");}
         ;
 
-InterfaceDecl:
-	INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE	{System.out.println("");}
+Field:
+	VariableDecl	{System.out.println("");}
+	| FunctionDecl	{System.out.println("");}
 	;
 
-Prototype:
-	Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");}
-	| VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");}
+InterfaceDecl:
+	INTERFACE ID LEFTBRACE Prototype_MULT RIGHTBRACE	{System.out.println("");}
 	;
 
 Prototype_MULT:
@@ -118,12 +115,22 @@ Prototype_MULT:
 	| /* Epsilon */	{System.out.println("");}
 	;
 
+Prototype:
+	Type ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");;}
+	| VOID ID LEFTPAREN Formals RIGHTPAREN SEMICOLON	{System.out.println("");}
+	;
+
 StmtBlock:
 	LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE	{System.out.println("");}
     	;
 
+Stmt_MULT:
+    	Stmt_MULT Stmt 	{System.out.println("");}
+        | /* Epsilon */	{System.out.println("");}
+        ;
+
 Stmt:
-	Expr SEMICOLON	{System.out.println("");}
+	Expr_ZOO SEMICOLON	{System.out.println("");}
     	| IfStmt	{System.out.println("");}
     	| WhileStmt    	{System.out.println("");}
     	| ForStmt      	{System.out.println("");}
@@ -133,13 +140,14 @@ Stmt:
     	| StmtBlock    	{System.out.println("");}
     	;
 
-Stmt_MULT:
-    	Stmt_MULT Stmt 	{System.out.println("");}
-        | /* Epsilon */	{System.out.println("");}
+Else_ZOO:
+	/* Epsilon */ 	{System.out.println("");}
+        |
+        ELSE Stmt	{System.out.println("");}
         ;
 
 IfStmt:
-	IF LEFTPAREN Expr RIGHTPAREN Stmt ELSE Stmt	{System.out.println("");}
+	IF LEFTPAREN Expr RIGHTPAREN Stmt Else_ZOO	{System.out.println("");}
 	;
 
 WhileStmt:
@@ -147,7 +155,7 @@ WhileStmt:
 	;
 
 ForStmt:
-	FOR LEFTPAREN Expr SEMICOLON Expr SEMICOLON Expr RIGHTPAREN Stmt	{System.out.println("");}
+	FOR LEFTPAREN Expr_ZOO SEMICOLON Expr SEMICOLON Expr_ZOO RIGHTPAREN Stmt	{System.out.println("");}
 	;
 
 BreakStmt:
@@ -155,12 +163,22 @@ BreakStmt:
 	;
 
 ReturnStmt:
-	RETURN Expr SEMICOLON	{System.out.println("");}
+	RETURN Expr_ZOO SEMICOLON	{System.out.println("");}
 	;
 
 PrintStmt:
-	PRINTLN LEFTPAREN Expr_PLUS COMMA RIGHTPAREN SEMICOLON	{System.out.println("");}
+	PRINTLN LEFTPAREN Expr_PLUS RIGHTPAREN SEMICOLON	{System.out.println("");}
 	;
+
+Expr_ZOO:
+	/* Epsilon */ 	{System.out.println("");}
+        | Expr 	{System.out.println("");}
+        ;
+
+Expr_PLUS:
+	Expr	{System.out.println("");}
+        | Expr_PLUS COMMA Expr	{System.out.println("");}
+        ;
 
 Expr:
 	Lvalue ASSIGNOP Expr 		{System.out.println("");}
@@ -189,11 +207,6 @@ Expr:
        	| NEWARRAY LEFTPAREN INTCONSTANT COMMA Type RIGHTPAREN	{System.out.println("");}
        	;
 
-Expr_PLUS:
-	Expr	{System.out.println("");}
-        | Expr_PLUS COMMA Expr	{System.out.println("");}
-        ;
-
 Lvalue:
 	ID 	{System.out.println("");}
 	| Lvalue LEFTBRACKET Expr RIGHTBRACKET	{System.out.println("");}
@@ -206,7 +219,7 @@ Call:
 	;
 
 Actuals:
-	Expr_PLUS COMMA	{System.out.println("");}
+	Expr_PLUS	{System.out.println("");}
 	| /* Epsilon */	{System.out.println("");}
 	;
 
@@ -237,13 +250,13 @@ return yyl_return;
 
 
 public void yyerror (String error) {
-	//System.err.println ("Error: " + error);
-	System.err.println ("[Reject]");
+	System.err.println ("Error: " + error);
+	//System.err.println ("[Reject]");
 
 }
 
 public Parser(Reader r) {
-	//yydebug=true;
+	yydebug=true;
 	lexer = new Yylex(r, this);
 }
 
