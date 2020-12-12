@@ -93,7 +93,7 @@ IMPLEMENT_ZOO:
 	;
 
 ClassDecl:
-	CLASS ID EXTEND_ZOO IMPLEMENT_ZOO LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("+  + " " + ");}
+	CLASS ID EXTEND_ZOO IMPLEMENT_ZOO LEFTBRACE Field_MULT RIGHTBRACE	{System.out.println("");}
 	;
 
 Field_MULT:
