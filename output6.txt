@@ -1,0 +1,96 @@
+loop
+yyn:0  state:0  yychar:-1
+INT - 267
+ next yychar:267
+state 0, shifting to state 4
+loop
+state 4, reducing 1 by rule 15 (Type : INT)
+ParserVal@6576fe71
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+LEFTBRACKET - 285
+ next yychar:285
+state 17, shifting to state 24
+loop
+yyn:0  state:24  yychar:-1
+RIGHTBRACKET - 286
+ next yychar:286
+state 24, shifting to state 31
+loop
+state 31, reducing 3 by rule 19 (Type : Type LEFTBRACKET RIGHTBRACKET)
+
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+LEFTBRACKET - 285
+ next yychar:285
+state 17, shifting to state 24
+loop
+yyn:0  state:24  yychar:-1
+RIGHTBRACKET - 286
+ next yychar:286
+state 24, shifting to state 31
+loop
+state 31, reducing 3 by rule 19 (Type : Type LEFTBRACKET RIGHTBRACKET)
+
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+LEFTBRACKET - 285
+ next yychar:285
+state 17, shifting to state 24
+loop
+yyn:0  state:24  yychar:-1
+RIGHTBRACKET - 286
+ next yychar:286
+state 24, shifting to state 31
+loop
+state 31, reducing 3 by rule 19 (Type : Type LEFTBRACKET RIGHTBRACKET)
+
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 23, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 0 to state 16
+loop
+yyn:0  state:16  yychar:289
+state 16, shifting to state 22
+loop
+state 22, reducing 2 by rule 10 (VariableDecl : Variable SEMICOLON)
+
+reduce
+after reduction, shifting from state 0 to state 12
+loop
+state 12, reducing 1 by rule 4 (Decl : VariableDecl)
+
+reduce
+after reduction, shifting from state 0 to state 11
+loop
+state 11, reducing 1 by rule 2 (Decl_PLUS : Decl)
+
+reduce
+after reduction, shifting from state 0 to state 10
+loop
+yyn:0  state:10  yychar:-1
+ - 0
+ next yychar:0
+reduce
+state 10, reducing 1 by rule 1 (Program : Decl_PLUS)
+
+reduce
+After reduction, shifting from state 0 to state 9

@@ -1,0 +1,137 @@
+loop
+yyn:0  state:0  yychar:-1
+VOID - 278
+ next yychar:278
+state 0, shifting to state 7
+loop
+yyn:0  state:7  yychar:-1
+ID - 281
+ next yychar:281
+state 7, shifting to state 20
+loop
+yyn:0  state:20  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 20, shifting to state 28
+loop
+yyn:0  state:28  yychar:-1
+DOUBLE - 260
+ next yychar:260
+state 28, shifting to state 3
+loop
+state 3, reducing 1 by rule 16 (Type : DOUBLE)
+
+reduce
+after reduction, shifting from state 28 to state 38
+loop
+yyn:0  state:38  yychar:-1
+ID - 281
+ next yychar:281
+state 38, shifting to state 66
+loop
+yyn:0  state:66  yychar:-1
+COMMA - 290
+ next yychar:290
+reduce
+state 66, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 28 to state 36
+loop
+state 36, reducing 1 by rule 11 (Variable_PLUS : Variable)
+
+reduce
+after reduction, shifting from state 28 to state 37
+loop
+yyn:0  state:37  yychar:290
+state 37, shifting to state 65
+loop
+yyn:0  state:65  yychar:-1
+DOUBLE - 260
+ next yychar:260
+state 65, shifting to state 3
+loop
+state 3, reducing 1 by rule 16 (Type : DOUBLE)
+
+reduce
+after reduction, shifting from state 65 to state 38
+loop
+yyn:0  state:38  yychar:-1
+ID - 281
+ next yychar:281
+state 38, shifting to state 66
+loop
+yyn:0  state:66  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 66, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 65 to state 97
+loop
+state 97, reducing 3 by rule 12 (Variable_PLUS : Variable_PLUS COMMA Variable)
+
+reduce
+after reduction, shifting from state 28 to state 37
+loop
+yyn:0  state:37  yychar:284
+reduce
+state 37, reducing 1 by rule 23 (Formals : Variable_PLUS)
+
+reduce
+after reduction, shifting from state 28 to state 39
+loop
+yyn:0  state:39  yychar:284
+state 39, shifting to state 67
+loop
+yyn:0  state:67  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 67, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+RIGHTBRACE - 288
+ next yychar:288
+reduce
+state 132, reducing 0 by rule 44 (Stmt_MULT :)
+
+reduce
+after reduction, shifting from state 132 to state 142
+loop
+yyn:0  state:142  yychar:288
+state 142, shifting to state 154
+loop
+state 154, reducing 4 by rule 41 (StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE)
+
+reduce
+after reduction, shifting from state 67 to state 99
+loop
+state 99, reducing 6 by rule 22 (FunctionDecl : VOID ID LEFTPAREN Formals RIGHTPAREN StmtBlock)
+
+reduce
+after reduction, shifting from state 0 to state 13
+loop
+state 13, reducing 1 by rule 5 (Decl : FunctionDecl)
+
+reduce
+after reduction, shifting from state 0 to state 11
+loop
+state 11, reducing 1 by rule 2 (Decl_PLUS : Decl)
+
+reduce
+after reduction, shifting from state 0 to state 10
+loop
+yyn:0  state:10  yychar:-1
+ - 0
+ next yychar:0
+reduce
+state 10, reducing 1 by rule 1 (Program : Decl_PLUS)
+
+reduce
+After reduction, shifting from state 0 to state 9

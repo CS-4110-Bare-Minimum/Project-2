@@ -1,0 +1,295 @@
+loop
+yyn:0  state:0  yychar:-1
+CLASS - 259
+ next yychar:259
+state 0, shifting to state 2
+loop
+yyn:0  state:2  yychar:-1
+ID - 281
+ next yychar:281
+state 2, shifting to state 18
+loop
+yyn:0  state:18  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+reduce
+state 18, reducing 0 by rule 27 (EXTEND_ZOO :)
+
+reduce
+after reduction, shifting from state 18 to state 26
+loop
+yyn:0  state:26  yychar:287
+reduce
+state 26, reducing 0 by rule 29 (IMPLEMENT_ZOO :)
+
+reduce
+after reduction, shifting from state 26 to state 34
+loop
+yyn:0  state:34  yychar:287
+state 34, shifting to state 60
+loop
+state 60, reducing 0 by rule 33 (Field_MULT :)
+
+reduce
+after reduction, shifting from state 60 to state 94
+loop
+yyn:0  state:94  yychar:-1
+BOOLEAN - 257
+ next yychar:257
+state 94, shifting to state 1
+loop
+state 1, reducing 1 by rule 17 (Type : BOOLEAN)
+
+reduce
+after reduction, shifting from state 94 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 23, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 94 to state 16
+loop
+yyn:0  state:16  yychar:289
+state 16, shifting to state 22
+loop
+state 22, reducing 2 by rule 10 (VariableDecl : Variable SEMICOLON)
+
+reduce
+after reduction, shifting from state 94 to state 127
+loop
+state 127, reducing 1 by rule 34 (Field : VariableDecl)
+
+reduce
+after reduction, shifting from state 94 to state 129
+loop
+state 129, reducing 2 by rule 32 (Field_MULT : Field_MULT Field)
+
+reduce
+after reduction, shifting from state 60 to state 94
+loop
+yyn:0  state:94  yychar:-1
+ID - 281
+ next yychar:281
+state 94, shifting to state 8
+loop
+state 8, reducing 1 by rule 20 (Type : ID)
+
+reduce
+after reduction, shifting from state 94 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 23, shifting to state 29
+loop
+yyn:0  state:29  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 29, reducing 0 by rule 24 (Formals :)
+
+reduce
+after reduction, shifting from state 29 to state 40
+loop
+yyn:0  state:40  yychar:284
+state 40, shifting to state 68
+loop
+yyn:0  state:68  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 68, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+RIGHTBRACE - 288
+ next yychar:288
+reduce
+state 132, reducing 0 by rule 44 (Stmt_MULT :)
+
+reduce
+after reduction, shifting from state 132 to state 142
+loop
+yyn:0  state:142  yychar:288
+state 142, shifting to state 154
+loop
+state 154, reducing 4 by rule 41 (StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE)
+
+reduce
+after reduction, shifting from state 68 to state 100
+loop
+state 100, reducing 6 by rule 21 (FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock)
+
+reduce
+after reduction, shifting from state 94 to state 128
+loop
+state 128, reducing 1 by rule 35 (Field : FunctionDecl)
+
+reduce
+after reduction, shifting from state 94 to state 129
+loop
+state 129, reducing 2 by rule 32 (Field_MULT : Field_MULT Field)
+
+reduce
+after reduction, shifting from state 60 to state 94
+loop
+yyn:0  state:94  yychar:-1
+DOUBLE - 260
+ next yychar:260
+state 94, shifting to state 3
+loop
+state 3, reducing 1 by rule 16 (Type : DOUBLE)
+
+reduce
+after reduction, shifting from state 94 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 23, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 94 to state 16
+loop
+yyn:0  state:16  yychar:289
+state 16, shifting to state 22
+loop
+state 22, reducing 2 by rule 10 (VariableDecl : Variable SEMICOLON)
+
+reduce
+after reduction, shifting from state 94 to state 127
+loop
+state 127, reducing 1 by rule 34 (Field : VariableDecl)
+
+reduce
+after reduction, shifting from state 94 to state 129
+loop
+state 129, reducing 2 by rule 32 (Field_MULT : Field_MULT Field)
+
+reduce
+after reduction, shifting from state 60 to state 94
+loop
+yyn:0  state:94  yychar:-1
+STRING - 275
+ next yychar:275
+state 94, shifting to state 6
+loop
+state 6, reducing 1 by rule 18 (Type : STRING)
+
+reduce
+after reduction, shifting from state 94 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 23, shifting to state 29
+loop
+yyn:0  state:29  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 29, reducing 0 by rule 24 (Formals :)
+
+reduce
+after reduction, shifting from state 29 to state 40
+loop
+yyn:0  state:40  yychar:284
+state 40, shifting to state 68
+loop
+yyn:0  state:68  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 68, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+RIGHTBRACE - 288
+ next yychar:288
+reduce
+state 132, reducing 0 by rule 44 (Stmt_MULT :)
+
+reduce
+after reduction, shifting from state 132 to state 142
+loop
+yyn:0  state:142  yychar:288
+state 142, shifting to state 154
+loop
+state 154, reducing 4 by rule 41 (StmtBlock : LEFTBRACE VariableDecl_MULT Stmt_MULT RIGHTBRACE)
+
+reduce
+after reduction, shifting from state 68 to state 100
+loop
+state 100, reducing 6 by rule 21 (FunctionDecl : Type ID LEFTPAREN Formals RIGHTPAREN StmtBlock)
+
+reduce
+after reduction, shifting from state 94 to state 128
+loop
+state 128, reducing 1 by rule 35 (Field : FunctionDecl)
+
+reduce
+after reduction, shifting from state 94 to state 129
+loop
+state 129, reducing 2 by rule 32 (Field_MULT : Field_MULT Field)
+
+reduce
+after reduction, shifting from state 60 to state 94
+loop
+yyn:0  state:94  yychar:-1
+RIGHTBRACE - 288
+ next yychar:288
+state 94, shifting to state 126
+loop
+state 126, reducing 7 by rule 31 (ClassDecl : CLASS ID EXTEND_ZOO IMPLEMENT_ZOO LEFTBRACE Field_MULT RIGHTBRACE)
+
+reduce
+after reduction, shifting from state 0 to state 14
+loop
+state 14, reducing 1 by rule 6 (Decl : ClassDecl)
+
+reduce
+after reduction, shifting from state 0 to state 11
+loop
+state 11, reducing 1 by rule 2 (Decl_PLUS : Decl)
+
+reduce
+after reduction, shifting from state 0 to state 10
+loop
+yyn:0  state:10  yychar:-1
+ - 0
+ next yychar:0
+reduce
+state 10, reducing 1 by rule 1 (Program : Decl_PLUS)
+
+reduce
+After reduction, shifting from state 0 to state 9

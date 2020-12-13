@@ -1,0 +1,85 @@
+loop
+yyn:0  state:0  yychar:-1
+VOID - 278
+ next yychar:278
+state 0, shifting to state 7
+loop
+yyn:0  state:7  yychar:-1
+ID - 281
+ next yychar:281
+state 7, shifting to state 20
+loop
+yyn:0  state:20  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 20, shifting to state 28
+loop
+yyn:0  state:28  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 28, reducing 0 by rule 24 (Formals :)
+
+reduce
+after reduction, shifting from state 28 to state 39
+loop
+yyn:0  state:39  yychar:284
+state 39, shifting to state 67
+loop
+yyn:0  state:67  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 67, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+FOR - 264
+ next yychar:264
+reduce
+state 132, reducing 0 by rule 44 (Stmt_MULT :)
+
+reduce
+after reduction, shifting from state 132 to state 142
+loop
+yyn:0  state:142  yychar:264
+state 142, shifting to state 149
+loop
+yyn:0  state:149  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 149, shifting to state 171
+loop
+yyn:0  state:171  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 171, reducing 0 by rule 61 (Expr_ZOO :)
+
+reduce
+after reduction, shifting from state 171 to state 178
+loop
+yyn:0  state:178  yychar:289
+state 178, shifting to state 183
+loop
+yyn:0  state:183  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+[Reject]
+error recovery discarding state 183
+error recovery discarding state 178
+error recovery discarding state 171
+error recovery discarding state 149
+error recovery discarding state 142
+error recovery discarding state 132
+error recovery discarding state 98
+error recovery discarding state 67
+error recovery discarding state 39
+error recovery discarding state 28
+error recovery discarding state 20
+error recovery discarding state 7
+error recovery discarding state 0
+[Reject]

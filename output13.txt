@@ -1,0 +1,353 @@
+loop
+yyn:0  state:0  yychar:-1
+INT - 267
+ next yychar:267
+state 0, shifting to state 4
+loop
+state 4, reducing 1 by rule 15 (Type : INT)
+ParserVal@6576fe71
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+ID - 281
+ next yychar:281
+state 17, shifting to state 23
+loop
+yyn:0  state:23  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 23, shifting to state 29
+loop
+yyn:0  state:29  yychar:-1
+INT - 267
+ next yychar:267
+state 29, shifting to state 4
+loop
+state 4, reducing 1 by rule 15 (Type : INT)
+ParserVal@76fb509a
+reduce
+after reduction, shifting from state 29 to state 38
+loop
+yyn:0  state:38  yychar:-1
+ID - 281
+ next yychar:281
+state 38, shifting to state 66
+loop
+yyn:0  state:66  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 66, reducing 2 by rule 13 (Variable : Type ID)
+
+reduce
+after reduction, shifting from state 29 to state 36
+loop
+state 36, reducing 1 by rule 11 (Variable_PLUS : Variable)
+
+reduce
+after reduction, shifting from state 29 to state 37
+loop
+yyn:0  state:37  yychar:284
+reduce
+state 37, reducing 1 by rule 23 (Formals : Variable_PLUS)
+
+reduce
+after reduction, shifting from state 29 to state 40
+loop
+yyn:0  state:40  yychar:284
+state 40, shifting to state 68
+loop
+yyn:0  state:68  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 68, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+IF - 265
+ next yychar:265
+reduce
+state 132, reducing 0 by rule 44 (Stmt_MULT :)
+
+reduce
+after reduction, shifting from state 132 to state 142
+loop
+yyn:0  state:142  yychar:265
+state 142, shifting to state 150
+loop
+yyn:0  state:150  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 150, shifting to state 172
+loop
+yyn:0  state:172  yychar:-1
+ID - 281
+ next yychar:281
+state 172, shifting to state 46
+loop
+yyn:0  state:46  yychar:-1
+GREATER - 304
+ next yychar:304
+reduce
+state 46, reducing 1 by rule 89 (Lvalue : ID)
+
+reduce
+after reduction, shifting from state 172 to state 55
+loop
+yyn:0  state:55  yychar:304
+reduce
+state 55, reducing 1 by rule 67 (Expr : Lvalue)
+
+reduce
+after reduction, shifting from state 172 to state 179
+loop
+yyn:0  state:179  yychar:304
+state 179, shifting to state 84
+loop
+yyn:0  state:84  yychar:-1
+INTCONSTANT - 291
+ next yychar:291
+state 84, shifting to state 48
+loop
+state 48, reducing 1 by rule 96 (Constant : INTCONSTANT)
+
+reduce
+after reduction, shifting from state 84 to state 56
+loop
+state 56, reducing 1 by rule 66 (Expr : Constant)
+
+reduce
+after reduction, shifting from state 84 to state 116
+loop
+yyn:0  state:116  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 116, reducing 3 by rule 79 (Expr : Expr GREATER Expr)
+
+reduce
+after reduction, shifting from state 172 to state 179
+loop
+yyn:0  state:179  yychar:284
+state 179, shifting to state 184
+loop
+yyn:0  state:184  yychar:-1
+RETURN - 274
+ next yychar:274
+state 184, shifting to state 152
+loop
+yyn:0  state:152  yychar:-1
+ID - 281
+ next yychar:281
+state 152, shifting to state 46
+loop
+yyn:0  state:46  yychar:-1
+MULTIPLICATION - 297
+ next yychar:297
+reduce
+state 46, reducing 1 by rule 89 (Lvalue : ID)
+
+reduce
+after reduction, shifting from state 152 to state 55
+loop
+yyn:0  state:55  yychar:297
+reduce
+state 55, reducing 1 by rule 67 (Expr : Lvalue)
+
+reduce
+after reduction, shifting from state 152 to state 156
+loop
+yyn:0  state:156  yychar:297
+state 156, shifting to state 77
+loop
+yyn:0  state:77  yychar:-1
+ID - 281
+ next yychar:281
+state 77, shifting to state 46
+loop
+yyn:0  state:46  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 46, shifting to state 72
+loop
+yyn:0  state:72  yychar:-1
+ID - 281
+ next yychar:281
+state 72, shifting to state 46
+loop
+yyn:0  state:46  yychar:-1
+MINUS - 301
+ next yychar:301
+reduce
+state 46, reducing 1 by rule 89 (Lvalue : ID)
+
+reduce
+after reduction, shifting from state 72 to state 55
+loop
+yyn:0  state:55  yychar:301
+reduce
+state 55, reducing 1 by rule 67 (Expr : Lvalue)
+
+reduce
+after reduction, shifting from state 72 to state 104
+loop
+yyn:0  state:104  yychar:301
+state 104, shifting to state 81
+loop
+yyn:0  state:81  yychar:-1
+INTCONSTANT - 291
+ next yychar:291
+state 81, shifting to state 48
+loop
+state 48, reducing 1 by rule 96 (Constant : INTCONSTANT)
+
+reduce
+after reduction, shifting from state 81 to state 56
+loop
+state 56, reducing 1 by rule 66 (Expr : Constant)
+
+reduce
+after reduction, shifting from state 81 to state 113
+loop
+yyn:0  state:113  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 113, reducing 3 by rule 72 (Expr : Expr MINUS Expr)
+
+reduce
+after reduction, shifting from state 72 to state 104
+loop
+yyn:0  state:104  yychar:284
+reduce
+state 104, reducing 1 by rule 63 (Expr_PLUS : Expr)
+
+reduce
+after reduction, shifting from state 72 to state 105
+loop
+yyn:0  state:105  yychar:284
+reduce
+state 105, reducing 1 by rule 94 (Actuals : Expr_PLUS)
+
+reduce
+after reduction, shifting from state 72 to state 106
+loop
+yyn:0  state:106  yychar:284
+state 106, shifting to state 136
+loop
+state 136, reducing 4 by rule 92 (Call : ID LEFTPAREN Actuals RIGHTPAREN)
+
+reduce
+after reduction, shifting from state 77 to state 57
+loop
+state 57, reducing 1 by rule 69 (Expr : Call)
+
+reduce
+after reduction, shifting from state 77 to state 109
+loop
+yyn:0  state:109  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 109, reducing 3 by rule 73 (Expr : Expr MULTIPLICATION Expr)
+
+reduce
+after reduction, shifting from state 152 to state 156
+loop
+yyn:0  state:156  yychar:289
+reduce
+state 156, reducing 1 by rule 62 (Expr_ZOO : Expr)
+
+reduce
+after reduction, shifting from state 152 to state 174
+loop
+yyn:0  state:174  yychar:289
+state 174, shifting to state 181
+loop
+state 181, reducing 3 by rule 59 (ReturnStmt : RETURN Expr_ZOO SEMICOLON)
+
+reduce
+after reduction, shifting from state 184 to state 164
+loop
+state 164, reducing 1 by rule 50 (Stmt : ReturnStmt)
+
+reduce
+after reduction, shifting from state 184 to state 188
+loop
+yyn:0  state:188  yychar:-1
+ELSE - 261
+ next yychar:261
+state 188, shifting to state 192
+loop
+yyn:0  state:192  yychar:-1
+RETURN - 274
+ next yychar:274
+state 192, shifting to state 152
+loop
+yyn:0  state:152  yychar:-1
+INTCONSTANT - 291
+ next yychar:291
+state 152, shifting to state 48
+loop
+state 48, reducing 1 by rule 96 (Constant : INTCONSTANT)
+
+reduce
+after reduction, shifting from state 152 to state 56
+loop
+state 56, reducing 1 by rule 66 (Expr : Constant)
+
+reduce
+after reduction, shifting from state 152 to state 156
+loop
+yyn:0  state:156  yychar:-1
+SEMICOLON - 289
+ next yychar:289
+reduce
+state 156, reducing 1 by rule 62 (Expr_ZOO : Expr)
+
+reduce
+after reduction, shifting from state 152 to state 174
+loop
+yyn:0  state:174  yychar:289
+state 174, shifting to state 181
+loop
+state 181, reducing 3 by rule 59 (ReturnStmt : RETURN Expr_ZOO SEMICOLON)
+
+reduce
+after reduction, shifting from state 192 to state 164
+loop
+state 164, reducing 1 by rule 50 (Stmt : ReturnStmt)
+
+reduce
+after reduction, shifting from state 192 to state 195
+loop
+state 195, reducing 2 by rule 54 (Else_ZOO : ELSE Stmt)
+
+reduce
+after reduction, shifting from state 188 to state 193
+loop
+yyn:0  state:193  yychar:-1
+RIGHTBRACE - 288
+ next yychar:288
+[Reject]
+error recovery discarding state 193
+error recovery discarding state 188
+error recovery discarding state 184
+error recovery discarding state 179
+error recovery discarding state 172
+error recovery discarding state 150
+error recovery discarding state 142
+error recovery discarding state 132
+error recovery discarding state 98
+error recovery discarding state 68
+error recovery discarding state 40
+error recovery discarding state 29
+error recovery discarding state 23
+error recovery discarding state 17
+error recovery discarding state 0
+[Reject]

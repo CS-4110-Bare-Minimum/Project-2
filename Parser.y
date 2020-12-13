@@ -25,12 +25,12 @@ Program:
 	;
 
 Decl_PLUS:
-	Decl	{System.out.println(" ");}
+	Decl	{System.out.println("");}
 	| Decl_PLUS Decl	{System.out.println("");}
 	;
 
 Decl:
-	VariableDecl	{System.out.println(" ");}
+	VariableDecl	{System.out.println("");}
 	| FunctionDecl	{System.out.println("");}
 	| ClassDecl	{System.out.println("");}
 	| InterfaceDecl	{System.out.println("");}

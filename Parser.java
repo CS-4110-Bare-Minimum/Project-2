@@ -618,7 +618,7 @@ private int yylex () {
 	try {
 		yylval = new ParserVal(0);
 		yyl_return = lexer.yylex();
-		System.out.println("-" + yyl_return);
+		System.out.println(" - " + yyl_return);
 	}
 	catch (IOException e) {
 		System.err.println("IO error :"+e);
@@ -806,7 +806,7 @@ case 1:
 break;
 case 2:
 //#line 28 "Parser.y"
-{System.out.println(" ");}
+{System.out.println("");}
 break;
 case 3:
 //#line 29 "Parser.y"
@@ -814,7 +814,7 @@ case 3:
 break;
 case 4:
 //#line 33 "Parser.y"
-{System.out.println(" ");}
+{System.out.println("");}
 break;
 case 5:
 //#line 34 "Parser.y"

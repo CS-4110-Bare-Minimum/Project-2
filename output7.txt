@@ -1,0 +1,24 @@
+loop
+yyn:0  state:0  yychar:-1
+ID - 281
+ next yychar:281
+state 0, shifting to state 8
+loop
+state 8, reducing 1 by rule 20 (Type : ID)
+
+reduce
+after reduction, shifting from state 0 to state 17
+loop
+yyn:0  state:17  yychar:-1
+LEFTBRACKET - 285
+ next yychar:285
+state 17, shifting to state 24
+loop
+yyn:0  state:24  yychar:-1
+INTCONSTANT - 291
+ next yychar:291
+[Reject]
+error recovery discarding state 24
+error recovery discarding state 17
+error recovery discarding state 0
+[Reject]

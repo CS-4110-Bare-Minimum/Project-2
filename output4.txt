@@ -1,0 +1,62 @@
+loop
+yyn:0  state:0  yychar:-1
+VOID - 278
+ next yychar:278
+state 0, shifting to state 7
+loop
+yyn:0  state:7  yychar:-1
+ID - 281
+ next yychar:281
+state 7, shifting to state 20
+loop
+yyn:0  state:20  yychar:-1
+LEFTPAREN - 283
+ next yychar:283
+state 20, shifting to state 28
+loop
+yyn:0  state:28  yychar:-1
+RIGHTPAREN - 284
+ next yychar:284
+reduce
+state 28, reducing 0 by rule 24 (Formals :)
+
+reduce
+after reduction, shifting from state 28 to state 39
+loop
+yyn:0  state:39  yychar:284
+state 39, shifting to state 67
+loop
+yyn:0  state:67  yychar:-1
+LEFTBRACE - 287
+ next yychar:287
+state 67, shifting to state 98
+loop
+state 98, reducing 0 by rule 9 (VariableDecl_MULT :)
+
+reduce
+after reduction, shifting from state 98 to state 132
+loop
+yyn:0  state:132  yychar:-1
+ID - 281
+ next yychar:281
+state 132, shifting to state 8
+loop
+state 8, reducing 1 by rule 20 (Type : ID)
+
+reduce
+after reduction, shifting from state 132 to state 38
+loop
+yyn:0  state:38  yychar:-1
+ASSIGNOP - 310
+ next yychar:310
+[Reject]
+error recovery discarding state 38
+error recovery discarding state 132
+error recovery discarding state 98
+error recovery discarding state 67
+error recovery discarding state 39
+error recovery discarding state 28
+error recovery discarding state 20
+error recovery discarding state 7
+error recovery discarding state 0
+[Reject]
