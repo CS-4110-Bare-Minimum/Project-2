@@ -4,6 +4,8 @@ Outline: You are to implement a syntax analyzer for the programming language Toy
 (1) create a parsing table for G 
 (2) perform a one-symbol lookahead parsing on various input Toy programs and print appropriate parsing actions
 
+Java - https://www.oracle.com/java/technologies/javase-downloads.html
+
 JFlex Installation - https://www.jflex.de/  
 JFlex Installation Help - https://www.jflex.de/manual.html#Installing  
 JFlex 1.8.2 
