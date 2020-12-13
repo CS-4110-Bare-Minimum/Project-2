@@ -1,10 +1,8 @@
 # Project-2
 
-Outline: You are to implement a lexical analyzer for a simple object-oriented programming language called Toy. 
-Your program should be able to...
-(1) translate any input Toy program into a sequence of tokens, and 
-(2) create a symbol table using the trie structure for all keywords and user-defined identifiers.
-
+Outline: You are to implement a syntax analyzer for the programming language Toy, as defined in project #1. You should first design a CFG G for Toy based on the following Backus Normal Form (BNF) description, and then write a program to...
+(1) create a parsing table for G 
+(2) perform a one-symbol lookahead parsing on various input Toy programs and print appropriate parsing actions
 
 JFlex Installation - https://www.jflex.de/  
 JFlex Installation Help - https://www.jflex.de/manual.html#Installing  
