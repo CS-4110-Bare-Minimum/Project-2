@@ -481,7 +481,7 @@ private int yylex () {
 	try {
 		yylval = new ParserVal(0);
 		yyl_return = lexer.yylex();
-		System.out.println("-" + yyl_return);
+		System.out.println(" - " + yyl_return);
 	}
 	catch (IOException e) {
 		System.err.println("IO error :"+e);
