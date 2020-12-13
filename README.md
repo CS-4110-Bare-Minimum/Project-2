@@ -17,6 +17,12 @@ How to compile and run JFLEX
 3. Run JFlex by issuing the jflex command on the .jflex file - jflex project1.jflex
 4. If done corectly, JFlex will output a .java file called Yylex.java
 
+How to compile and run JFLEX
+1. With JFlex installed and added to PATH, you need to open the command prompt/terminal window.
+2. Change to the directory of the files using the cd command - cd target-path-here
+3. Run JFlex by issuing the jflex command on the .jflex file - jflex project1.jflex
+4. If done corectly, JFlex will output a .java file called Yylex.java
+
 How to compile and run Byaccj
 5. Now with the Byaccj zip downloaded, you must unzip the file into somewhere you will remember such as C:\byaccj
 6. Now you must add Byaccj to PATH
