@@ -21,7 +21,7 @@ How to compile and run Byaccj
 1. Now with the Byaccj zip downloaded, you must unzip the file into somewhere you will remember such as C:\byaccj
 2. Now you must add Byaccj to PATH
 3. With Byaccj added to PATH, you must open up command prompt and cd to the directory of the files - cd target-path-here
-4. To get Parser.java issue the command - byaccj -j Parser.y
+4. To get Parser.java issue the command - byaccj -J Parser.y
 5. To get y.output issue the command - byaccj -v Parser.y
 6. Compile the Parser.java with JAVA using the command - javac Parser.java
 7. Now run the command - java Parser
