@@ -27,4 +27,4 @@ How to compile and run Byaccj
 5. To get y.output issue the command - byaccj -v Parser.y
 6. Compile the Parser.java with JAVA using the command - javac Parser.java
 7. Now run the command - java Parser
-8. Enter the input you wish to analyze
+8. Enter the input you wish to analyze i.e input1.txt
